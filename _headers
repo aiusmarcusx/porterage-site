@@ -1,5 +1,9 @@
-# Cloudflare Pages reads this file. Hashed assets are not used here, so the HTML stays
-# short-lived while the images and stylesheet are cached hard and busted by renaming.
+# Cloudflare Pages reads this file.
+#
+# The asset names carry no content hash — style.css stays style.css across edits — so `immutable`
+# and a one-year max-age would pin a broken stylesheet in every returning visitor's browser until
+# 2027. An hour instead: Cloudflare still serves these from its own edge, and a fix reaches people.
+# Restore the long cache only together with hashed filenames.
 /*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
@@ -7,7 +11,7 @@
   Permissions-Policy: geolocation=(), microphone=(), camera=(), interest-cohort=()
 
 /assets/*
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, max-age=3600
 
 /
   Cache-Control: public, max-age=300, must-revalidate
