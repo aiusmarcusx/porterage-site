@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Porterage — move files between Android and a Mac, over the cable</title>
+<meta name="description" content="A native macOS app that copies files to and from an Android phone over USB. Every claim on this page is a measurement taken from real hardware.">
+<meta name="theme-color" content="#17181A">
+<link rel="canonical" href="https://porterage.app/">
+<meta property="og:title" content="Porterage — Android to Mac, over the cable">
+<meta property="og:description" content="Folder listings in 0.56s instead of 3.2s. Small files that stay fast instead of wedging after 211. Interrupted copies that resume byte-exact.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://porterage.app/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Azeret+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<!--
+THESIS: A transfer tool earns trust the way instruments do — by displaying what it measured, under stated conditions. Refuses the category's floating-screenshot-on-gradient hero.
+OWN-WORLD: An anodized graphite equipment faceplate. Screen-printed grotesque labels, engraved rules, a segment throughput ladder whose unreached cells stay visible, amber signal lamps, one alarm red. Screenshots mounted as registered plates with corner marks.
+STORY: The visitor arrived because another tool stalled. They read the named fault, see it measured, see the fix measured beside it, and download.
+FIRST VIEWPORT: Full-bleed panel. Left, PORTERAGE engraved at display scale over a model line. Right, a 24-cell segment ladder reading 29 MB/s with unlit cells ghosted. Below, an engraved rule, then four screen-printed spec cells and the amber DOWNLOAD plate.
+FORM: Studio and measurement hardware faceplate; candidate 7 of the grounded list; seed key a888c244.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
+-->
+
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="rail" aria-hidden="true"></div>
+
+<header class="panel panel--head">
+  <div class="wrap head">
+    <div class="head__id">
+      <p class="stencil">Serial 0.1.0 · Pre-release</p>
+      <h1 class="brand">Porterage</h1>
+      <p class="model">MTP transfer unit · Android to macOS · over cable</p>
+      <p class="lede">
+        A Mac app that copies files to and from an Android phone. It speaks the phone's transfer
+        protocol directly, which is why the numbers on this page are not the ones you are used to.
+      </p>
+      <div class="actions">
+        <a class="plate-btn" href="https://github.com/aiusmarcusx/porterage/releases/latest">
+          <span class="plate-btn__lamp" aria-hidden="true"></span>
+          <span class="plate-btn__text">Download for macOS</span>
+          <span class="plate-btn__meta">Universal · 2.8 MB</span>
+        </a>
+        <a class="ghost-btn" href="https://github.com/aiusmarcusx/porterage">Read the source</a>
+      </div>
+      <p class="caveat">
+        <span class="dot dot--alarm" aria-hidden="true"></span>
+        <span>Not yet notarised by Apple. First launch needs a right-click → Open.
+        <a href="#limits">What else it does not do</a></span>
+      </p>
+    </div>
+
+    <div class="head__meter">
+      <div class="gauge" role="img" aria-label="Measured read speed: 29 megabytes per second, on a Redmi 9T over USB 2.0">
+        <p class="gauge__label">Read from phone</p>
+        <div class="ladder" data-lit="17">
+          <span></span><span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <p class="gauge__scale"><span>0</span><span>40 MB/s full scale</span></p>
+        <p class="gauge__read"><strong>29</strong><em>MB/s</em></p>
+        <p class="gauge__foot">Write to phone tops out at 15. The phone's flash is the limit, not the cable.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="specrow">
+    <div class="wrap specrow__grid">
+      <div class="spec"><p class="spec__k">Folder listing</p><p class="spec__v">0.56<em>s</em></p><p class="spec__n">345 files · 3.2 s the usual way</p></div>
+      <div class="spec"><p class="spec__k">Small files</p><p class="spec__v">53<em>ms</em></p><p class="spec__n">each, and it stays there</p></div>
+      <div class="spec"><p class="spec__k">Photo library</p><p class="spec__v">79<em>s</em></p><p class="spec__n">324 photos · 2 GB</p></div>
+      <div class="spec"><p class="spec__k">Requires</p><p class="spec__v">14<em>+</em></p><p class="spec__n">macOS · Apple silicon &amp; Intel</p></div>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="panel" id="faults">
+  <div class="wrap">
+    <div class="sechead">
+      <p class="stencil">Section 01</p>
+      <h2>Three ways the other tools fail</h2>
+      <p class="sechead__sub">
+        Each one was reproduced on a Redmi 9T against a MacBook Air M1, and each is the reason a
+        corresponding part of Porterage is built the way it is.
+      </p>
+    </div>
+
+    <ol class="faults">
+      <li class="fault">
+        <p class="fault__no">01</p>
+        <div class="fault__body">
+<h3>It stops answering after a couple of hundred files</h3>
+        <p>
+          The phone raises an interrupt event for every object written. A client that never reads that
+          queue slows down as the queue fills, and then MTP stops responding entirely — a USB reset
+          does not recover it. You have to physically unplug the cable.
+        </p>
+        </div>
+        <div class="readout">
+          <div class="readout__row"><span class="readout__k">Queue drained</span><span class="bar"><i style="--w:4.8%"></i></span><span class="readout__v">53 ms<em>per file</em></span></div>
+          <div class="readout__row readout__row--bad"><span class="readout__k">Not drained</span><span class="bar"><i style="--w:100%"></i></span><span class="readout__v">1 100 ms<em>per file</em></span></div>
+          <p class="readout__note">Same phone, same 400 files. Undrained, it wedged for good at roughly 211 objects.</p>
+        </div>
+      </li>
+
+      <li class="fault">
+        <p class="fault__no">02</p>
+        <div class="fault__body">
+<h3>Opening a folder takes longer than it should</h3>
+        <p>
+          The common library marks every Android device as unable to use MTP's bulk listing command,
+          and offers no way to override it — so it asks the phone about each file in turn. Porterage
+          implements the protocol itself and asks once per property instead.
+        </p>
+        </div>
+        <div class="readout">
+          <div class="readout__row"><span class="readout__k">Porterage</span><span class="bar"><i style="--w:17.5%"></i></span><span class="readout__v">0.56 s<em>345 files</em></span></div>
+          <div class="readout__row readout__row--bad"><span class="readout__k">One request per file</span><span class="bar"><i style="--w:100%"></i></span><span class="readout__v">3.2 s<em>345 files</em></span></div>
+          <p class="readout__note">Both bars share one scale. At ten thousand photos the gap is about 95 seconds against six.</p>
+        </div>
+      </li>
+
+      <li class="fault">
+        <p class="fault__no">03</p>
+        <div class="fault__body">
+<h3>Two files that differ only in case destroy each other</h3>
+        <p>
+          The phone's storage ignores capitalisation; the protocol does not. So
+          <code>Report.txt</code> and <code>report.txt</code> both appear in a listing while sharing one
+          file underneath, and writing the second silently overwrites the first. Nothing warns you.
+          Porterage compares names the way the storage actually does, and refuses the write.
+        </p>
+        </div>
+        <div class="lamps">
+          <p class="lamp lamp--alarm"><span class="dot dot--alarm" aria-hidden="true"></span>Silently overwritten elsewhere</p>
+          <p class="lamp lamp--ok"><span class="dot dot--ok" aria-hidden="true"></span>Refused here, with the conflicting name shown</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="panel panel--plate">
+  <div class="wrap">
+    <figure class="plate">
+      <div class="plate__frame">
+        <img src="assets/grid.webp" width="1600" height="1088" alt="Porterage showing a folder of photos as a grid of thumbnails, with a breadcrumb, search field, sort control and a free-space readout along the bottom." loading="lazy" decoding="async">
+        <span class="reg reg--tl" aria-hidden="true"></span><span class="reg reg--tr" aria-hidden="true"></span>
+        <span class="reg reg--bl" aria-hidden="true"></span><span class="reg reg--br" aria-hidden="true"></span>
+      </div>
+      <figcaption class="plate__cap">
+        <span class="plate__id">Plate I</span>
+        <span class="plate__desc">Photo grid. Thumbnails arrive in 14 ms each; files that carry none — screenshots, downloads — are fetched and scaled on the Mac instead of showing a blank tile.</span>
+        <span class="plate__note">Images staged for this screenshot. Not a real photo library.</span>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="panel" id="verify">
+  <div class="wrap">
+    <div class="sechead">
+      <p class="stencil">Section 02</p>
+      <h2>What it does when things go wrong</h2>
+      <p class="sechead__sub">Interruption is the normal case with a cable. It is designed for, not apologised for.</p>
+    </div>
+
+    <div class="cards">
+      <article class="card">
+        <p class="card__k">Cable pulled mid-copy</p>
+        <h3>Resumes at the exact byte</h3>
+        <p>
+          The phone reports precisely how much of the file it already holds, so a resumed copy starts at
+          the real boundary instead of a guess. Verified in both directions by comparing SHA-256 of the
+          finished file against the original.
+        </p>
+        <p class="card__read">Resumed upload <strong>19.4</strong> MB/s · resumed download <strong>28.8</strong> MB/s</p>
+      </article>
+
+      <article class="card">
+        <p class="card__k">Screen locks while copying</p>
+        <h3>Keeps going at full speed</h3>
+        <p>
+          Android blocks a computer from <em>starting</em> a session on a locked phone, but it does not
+          touch one already running. Eleven consecutive 512 MB reads finished with the screen locked
+          the whole time, at the same speed as unlocked, with no errors.
+        </p>
+        <p class="card__read">Locked throughput <strong>29.1–29.5</strong> MB/s · 0 failures</p>
+      </article>
+
+      <article class="card">
+        <p class="card__k">Phone is nearly full</p>
+        <h3>Refuses before it starts</h3>
+        <p>
+          The phone itself will happily accept a file far larger than its remaining space and fail
+          minutes later. Its reported free space, though, is exact to the byte — so Porterage checks
+          first and tells you how much is missing.
+        </p>
+        <p class="card__read">64 MB written moved free space by <strong>64.1</strong> MB, and back on delete</p>
+      </article>
+
+      <article class="card">
+        <p class="card__k">Nothing shows up</p>
+        <h3>Says which of five things is wrong</h3>
+        <p>
+          Locked screen, wrong USB mode, charge-only cable, another app holding the port, or a wedged
+          connection needing a replug. Each has a different signature on the wire, and each gets its
+          own sentence instead of “busy or not connected”.
+        </p>
+        <p class="card__read">Five states, five instructions</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="panel panel--split">
+  <div class="wrap split">
+    <div class="split__text">
+      <p class="stencil">Plate II</p>
+      <h2>Drag a row straight into the Finder</h2>
+      <p>
+        The file is fetched when you let go, not when you pick it up. Start the drag on a 20 MB photo
+        and it moves with the cursor immediately; the copy happens once the drop lands somewhere.
+      </p>
+      <p>
+        Everything else a file manager owes you is here too — rename, delete with a confirmation,
+        new folder, select all, search that ignores accents, and sorting by name, size or date.
+      </p>
+      <dl class="minispec">
+        <div><dt>Copied out</dt><dd>29 MB/s</dd></div>
+        <div><dt>Copied in</dt><dd>15 MB/s</dd></div>
+        <div><dt>Deleted</dt><dd>25 ms each</dd></div>
+      </dl>
+    </div>
+    <figure class="plate plate--tall">
+      <div class="plate__frame">
+        <img src="assets/list.webp" width="1600" height="1088" alt="Porterage in list view, showing file names, sizes and dates in aligned columns with folders first." loading="lazy" decoding="async">
+        <span class="reg reg--tl" aria-hidden="true"></span><span class="reg reg--tr" aria-hidden="true"></span>
+        <span class="reg reg--bl" aria-hidden="true"></span><span class="reg reg--br" aria-hidden="true"></span>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<section class="panel" id="bench">
+  <div class="wrap">
+    <div class="sechead">
+      <p class="stencil">Section 03</p>
+      <h2>Conditions of measurement</h2>
+      <p class="sechead__sub">
+        One phone, one Mac, one cable. Your hardware will differ — these are the conditions the numbers
+        above were taken under, not a promise about yours.
+      </p>
+    </div>
+    <dl class="conditions">
+      <div><dt>Phone</dt><dd>Redmi 9T, MIUI, Android 11</dd></div>
+      <div><dt>Computer</dt><dd>MacBook Air M1, macOS 26.5</dd></div>
+      <div><dt>Link</dt><dd>USB 2.0, the phone's own cable</dd></div>
+      <div><dt>Sustained</dt><dd>39 consecutive 512 MB round trips, about 20 GB, no errors and no drift</dd></div>
+      <div><dt>Large files</dt><dd>4 402 341 478 bytes transferred and read back correctly past the 4 GB mark</dd></div>
+      <div><dt>First listing</dt><dd>About 17 s after plugging in, while the phone indexes ~34 000 objects. Every listing after that, 0.17 s</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="panel panel--limits" id="limits">
+  <div class="wrap">
+    <div class="sechead">
+      <p class="stencil">Section 04</p>
+      <h2>What it does not do</h2>
+      <p class="sechead__sub">Stated here because finding out later is worse.</p>
+    </div>
+    <ul class="limits">
+      <li><strong>Not signed by Apple yet.</strong> macOS will warn on first launch until a Developer ID certificate is in place. Right-click the app and choose Open to get past it.</li>
+      <li><strong>No Wi-Fi, no cloud, no account.</strong> A cable, and nothing installed on the phone.</li>
+      <li><strong>Dates survive one direction only.</strong> Files copied to the Mac keep their original date; the phone stamps its own clock on anything copied to it, and refuses to be told otherwise.</li>
+      <li><strong>Memory cards are untested.</strong> The phone used for development has no card slot in use, so that path has never been exercised.</li>
+      <li><strong>Pre-release.</strong> One phone model has been tested properly. If yours behaves differently, the connection report in the app is designed to say why.</li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer class="panel panel--foot">
+  <div class="wrap foot">
+    <div class="foot__left">
+      <p class="brand brand--sm">Porterage</p>
+      <p class="model">Open source · built on libusb · no telemetry</p>
+    </div>
+    <div class="foot__right">
+      <a class="plate-btn plate-btn--sm" href="https://github.com/aiusmarcusx/porterage/releases/latest">
+        <span class="plate-btn__lamp" aria-hidden="true"></span>
+        <span class="plate-btn__text">Download for macOS</span>
+      </a>
+      <a class="ghost-btn" href="https://github.com/aiusmarcusx/porterage">Source &amp; measurements</a>
+    </div>
+  </div>
+</footer>
+<script src="assets/panel.js" defer></script>
+</body>
+</html>

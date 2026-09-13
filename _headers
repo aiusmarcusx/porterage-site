@@ -1,0 +1,13 @@
+# Cloudflare Pages reads this file. Hashed assets are not used here, so the HTML stays
+# short-lived while the images and stylesheet are cached hard and busted by renaming.
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: DENY
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), interest-cohort=()
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/
+  Cache-Control: public, max-age=300, must-revalidate
