@@ -34,7 +34,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   <div class="wrap head">
     <div class="head__id">
       <h1 class="brand">Porterage</h1>
-      <p class="model">Pre-release 0.1.0 · Android to macOS, over cable</p>
+      <p class="model">Version 0.1.0 · Android to macOS, over cable</p>
       <p class="lede">
         A Mac app that copies files to and from an Android phone. It speaks the phone's transfer
         protocol directly, which is why the numbers on this page are not the ones you are used to.
@@ -48,8 +48,8 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
       </div>
       <p class="caveat">
         <span class="dot dot--alarm" aria-hidden="true"></span>
-        <span>Pre-release: the first build is not published yet, and it is not notarised by Apple —
-        first launch will need a right-click → Open.
+        <span>Not notarised by Apple yet, so the first launch needs a right-click → Open. One phone
+        model has been tested properly.
         <a href="#limits">What else it does not do</a></span>
       </p>
     </div>
@@ -147,20 +147,42 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   </div>
 </section>
 
-<section class="panel panel--plate">
+<section class="panel panel--chain" id="thumbs">
   <div class="wrap">
-    <figure class="plate">
-      <div class="plate__frame">
-        <img src="assets/grid.webp" width="1600" height="1088" alt="Porterage showing a folder of photos as a grid of thumbnails, with a breadcrumb, search field, sort control and a free-space readout along the bottom." loading="lazy" decoding="async">
-        <span class="reg reg--tl" aria-hidden="true"></span><span class="reg reg--tr" aria-hidden="true"></span>
-        <span class="reg reg--bl" aria-hidden="true"></span><span class="reg reg--br" aria-hidden="true"></span>
-      </div>
-      <figcaption class="plate__cap">
-        <span class="plate__id">Plate I</span>
-        <span class="plate__desc">Photo grid. Thumbnails arrive in 14 ms each; files that carry none — screenshots, downloads — are fetched and scaled on the Mac instead of showing a blank tile.</span>
-        <span class="plate__note">Placeholder images, staged on the phone for this screenshot so the owner's own photo library stayed out of it. The app and the thumbnails are real.</span>
-      </figcaption>
-    </figure>
+    <div class="sechead">
+      <h2>Every tile in the grid gets a picture</h2>
+      <p class="sechead__sub">
+        MTP's thumbnail command is not a thumbnail service. It hands back whatever the file's own EXIF
+        header already holds — which, for a screenshot or a downloaded image, is nothing. So there are
+        three routes, tried in that order, and the grid fills instead of showing blanks.
+      </p>
+    </div>
+
+    <ol class="chain">
+      <li class="chain__step">
+        <p class="chain__no">Route 1</p>
+        <h3>Ask the phone</h3>
+        <p>The embedded thumbnail, sent straight off the phone. Camera photos almost always carry one.</p>
+        <p class="chain__read"><strong>14</strong> ms each · 57 of 60 camera photos · 300 photos in 4.1 s</p>
+      </li>
+      <li class="chain__step">
+        <p class="chain__no">Route 2</p>
+        <h3>Read the first 64 KiB</h3>
+        <p>When the phone returns nothing, pull the header down and look for the embedded JPEG here.</p>
+        <p class="chain__read"><strong>9</strong> ms each · found one in 17 of the 20 tried</p>
+      </li>
+      <li class="chain__step">
+        <p class="chain__no">Route 3</p>
+        <h3>Fetch it and scale it on the Mac</h3>
+        <p>The whole file, resized on this end. Screenshots and downloaded images land here.</p>
+        <p class="chain__read">About <strong>15%</strong> of a real phone · files over 40 MiB skipped</p>
+      </li>
+    </ol>
+
+    <p class="chain__foot">
+      The whole pass runs after every visible tile already holds something, so scrolling is never
+      waiting on a picture.
+    </p>
   </div>
 </section>
 
@@ -228,8 +250,8 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
         and it moves with the cursor immediately; the copy happens once the drop lands somewhere.
       </p>
       <p>
-        Everything else a file manager owes you is here too — rename, delete with a confirmation,
-        new folder, select all, search that ignores accents, and sorting by name, size or date.
+        Drop files the other way, copy whole folders in either direction, and watch the free space on
+        the phone move as it happens.
       </p>
       <dl class="minispec">
         <div><dt>Copied out</dt><dd>29 MiB/s</dd></div>
@@ -237,17 +259,18 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
         <div><dt>Deleted</dt><dd>25 ms each</dd></div>
       </dl>
     </div>
-    <figure class="plate plate--tall">
-      <div class="plate__frame">
-        <img src="assets/list.webp" width="1600" height="1088" alt="Porterage in list view, showing file names, sizes and dates in aligned columns with folders first." loading="lazy" decoding="async">
-        <span class="reg reg--tl" aria-hidden="true"></span><span class="reg reg--tr" aria-hidden="true"></span>
-        <span class="reg reg--bl" aria-hidden="true"></span><span class="reg reg--br" aria-hidden="true"></span>
-      </div>
-      <figcaption class="plate__cap">
-        <span class="plate__id">Plate II</span>
-        <span class="plate__desc">List view, sorted by name. Folders lead whatever the sort.</span>
-      </figcaption>
-    </figure>
+
+    <div class="feats">
+      <p class="feats__k">Also in the window</p>
+      <ul class="feats__list">
+        <li>Rows or a grid of thumbnails</li>
+        <li>Rename, and delete behind a confirmation</li>
+        <li>New folder, select all</li>
+        <li>Search that ignores accents</li>
+        <li>Sort by name, size or date — folders lead either way</li>
+        <li>Space bar to preview a photo, arrow keys to step through</li>
+      </ul>
+    </div>
   </div>
 </section>
 
@@ -281,7 +304,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
       <li><strong>No Wi-Fi, no cloud, no account.</strong> A cable, and nothing installed on the phone.</li>
       <li><strong>Dates survive one direction only.</strong> Files copied to the Mac keep their original date; the phone stamps its own clock on anything copied to it, and refuses to be told otherwise.</li>
       <li><strong>Memory cards are untested.</strong> The phone used for development has no card slot in use, so that path has never been exercised.</li>
-      <li><strong>Pre-release.</strong> One phone model has been tested properly. If yours behaves differently, the connection report in the app is designed to say why.</li>
+      <li><strong>0.1.0 is early.</strong> One phone model has been tested properly. If yours behaves differently, the connection report in the app is designed to say why.</li>
     </ul>
   </div>
 </section>

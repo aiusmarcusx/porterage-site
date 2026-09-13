@@ -99,7 +99,7 @@ a { color: var(--text-bright); }
   z-index: 1;
 }
 .panel--head { padding-block: clamp(44px, 6vw, 72px) 0; }
-.panel--plate { background: var(--panel-low); }
+.panel--chain { background: var(--panel-low); }
 .panel--limits { background: var(--panel-low); }
 .panel--foot { border-bottom: 0; padding-block: 40px; }
 
@@ -437,50 +437,79 @@ a { color: var(--text-bright); }
 .lamp--ok { border-color: rgba(92, 196, 125, 0.28); }
 .lamp--alarm { border-color: rgba(228, 84, 74, 0.28); }
 
-/* Plates ---------------------------------------------------------------- */
+/* Thumbnail chain — three routes tried in order, drawn as the signal path it is. The lamp at each
+   tap dims as the route gets rarer: route 1 answers for most files, route 3 for about a seventh. */
 
-.plate { margin: 0; }
-.plate__frame {
+.chain {
   position: relative;
-  padding: clamp(12px, 2vw, 22px);
-  background: linear-gradient(180deg, var(--panel-high), var(--panel-low));
-  border: 1px solid var(--edge-soft);
-  border-radius: 3px;
-}
-.plate__frame img { border: 1px solid #000; border-radius: 2px; }
-
-/* Registration marks at each plate corner — the image is mounted, not floated. */
-.reg { position: absolute; width: 13px; height: 13px; opacity: 0.55; }
-.reg::before, .reg::after { content: ""; position: absolute; background: var(--label-dim); }
-.reg::before { left: 0; right: 0; top: 6px; height: 1px; }
-.reg::after { top: 0; bottom: 0; left: 6px; width: 1px; }
-.reg--tl { top: 5px; left: 5px; }
-.reg--tr { top: 5px; right: 5px; }
-.reg--bl { bottom: 5px; left: 5px; }
-.reg--br { bottom: 5px; right: 5px; }
-
-.plate__cap {
+  list-style: none;
+  margin: 0;
+  padding: 34px 0 0;
   display: grid;
-  grid-template-columns: 88px minmax(0, 1fr);
-  gap: 8px 22px;
-  margin-top: 18px;
-  padding-top: 16px;
-  border-top: var(--rule);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(24px, 3vw, 48px);
 }
-.plate__id {
+.chain::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 8px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--signal-deep) 0%, var(--edge) 78%, var(--edge-soft) 100%);
+}
+.chain__step { position: relative; }
+.chain__step::before {
+  content: "";
+  position: absolute;
+  top: -30px;
+  left: 0;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--signal);
+  box-shadow: 0 0 10px rgba(255, 165, 31, 0.5);
+}
+.chain__step:nth-child(2)::before { background: var(--signal-deep); box-shadow: 0 0 7px rgba(201, 122, 5, 0.4); }
+.chain__step:nth-child(3)::before { background: var(--edge); box-shadow: none; }
+
+.chain__step h3 {
+  font-size: clamp(18px, 2vw, 21px);
+  font-weight: 600;
+  letter-spacing: -0.018em;
+  line-height: 1.24;
+  margin: 0 0 10px;
+  color: var(--text-bright);
+}
+.chain__step p { margin: 0; color: var(--label); font-size: 15.5px; line-height: 1.6; }
+
+.chain .chain__no {
   font-family: var(--mono);
-  font-size: 12px;
+  font-size: 11.5px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--signal);
+  margin: 0 0 12px;
 }
-.plate__desc { font-size: 15px; color: var(--label); line-height: 1.55; max-width: 68ch; }
-.plate__note {
-  grid-column: 2;
-  max-width: 68ch;
+.chain__step:nth-child(3) .chain__no { color: var(--label-dim); }
+
+.chain .chain__read {
+  margin-top: 16px;
+  padding-top: 13px;
+  border-top: var(--rule);
   font-family: var(--mono);
-  font-size: 12px;
-  letter-spacing: 0.06em;
+  font-size: 12.5px;
+  letter-spacing: 0.04em;
+  color: var(--label-dim);
+}
+.chain .chain__read strong { color: var(--signal); font-weight: 500; font-size: 14px; }
+
+.chain__foot {
+  margin: clamp(30px, 4vw, 44px) 0 0;
+  padding-top: 18px;
+  border-top: var(--rule);
+  max-width: 72ch;
+  font-size: 15px;
   color: var(--label-dim);
 }
 
@@ -580,8 +609,11 @@ a { color: var(--text-bright); }
   .fault .readout, .fault .lamps { grid-column: 2; }
   .cards { grid-template-columns: 1fr; }
   .conditions { grid-template-columns: 1fr; }
-  .plate__cap { grid-template-columns: 1fr; gap: 6px; }
-  .plate__note { grid-column: 1; }
+  /* Stacked, the path turns into a margin of tap points rather than a line across the top. */
+  .chain { grid-template-columns: 1fr; gap: 0; padding-top: 0; }
+  .chain::before { display: none; }
+  .chain__step { padding: 22px 0 24px 26px; border-top: var(--rule); }
+  .chain__step::before { top: 26px; left: 0; }
 }
 
 @media (max-width: 560px) {
@@ -597,14 +629,14 @@ a { color: var(--text-bright); }
 }
 
 
-/* Split plate — the second screenshot argues alongside prose instead of repeating the first's
-   full-bleed rhythm. */
 .panel--split { background: var(--panel-low); }
+
+/* Split — prose on the left argues, the inventory on the right answers "and what else". */
 .split {
   display: grid;
-  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.78fr);
   gap: clamp(28px, 5vw, 72px);
-  align-items: center;
+  align-items: start;
 }
 .split__text h2 {
   font-size: clamp(26px, 3.4vw, 38px);
@@ -633,9 +665,39 @@ a { color: var(--text-bright); }
 }
 .minispec dd { margin: 0; font-family: var(--mono); font-size: 13px; color: var(--signal); }
 
+
+/* The inventory column: what is in the window, once the headline claim is made. */
+.feats { border-left: var(--rule); padding-left: clamp(20px, 3vw, 34px); }
+.feats__k {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--signal);
+  margin: 0 0 8px;
+}
+.feats__list { list-style: none; margin: 0; padding: 0; }
+.feats__list li {
+  position: relative;
+  padding: 12px 0 12px 24px;
+  border-top: var(--rule);
+  color: var(--label);
+  font-size: 15.5px;
+  line-height: 1.5;
+}
+.feats__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 21px;
+  width: 11px;
+  height: 1px;
+  background: var(--signal-deep);
+}
+
 @media (max-width: 900px) {
   .split { grid-template-columns: 1fr; }
-  .split__text { order: 2; }
+  .feats { border-left: 0; padding-left: 0; }
 }
 
 @media (max-width: 560px) {
@@ -651,6 +713,3 @@ a { color: var(--text-bright); }
 input, textarea { caret-color: var(--signal); }
 
 .ghost-btn:active { background: var(--recess); box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6); }
-
-/* Plate II's caption sits under a figure that shares its row with prose. */
-.plate--tall .plate__cap { grid-template-columns: 88px minmax(0, 1fr); }
