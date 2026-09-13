@@ -3,6 +3,8 @@
    state; panels do not move. */
 
 :root {
+  accent-color: #ffa51f;
+  scrollbar-color: #3a3e43 #101113;
   --panel: #17181a;
   --panel-high: #1f2124;
   --panel-low: #101113;
@@ -13,7 +15,7 @@
   /* Both tones clear WCAG AA (4.5:1) against every panel ground here; the small mono
      labels are 10–11px, which makes contrast matter more, not less. */
   --label: #9aa0a8;
-  --label-dim: #7e838b;
+  --label-dim: #888d95;
   --text: #d7dbe0;
   --text-bright: #f2f4f6;
 
@@ -187,7 +189,7 @@ a { color: var(--text-bright); }
   font-size: 12px;
   font-weight: 400;
   letter-spacing: 0.06em;
-  color: rgba(20, 22, 26, 0.72);
+  color: rgba(18, 20, 24, 0.88);
 }
 .plate-btn--sm { padding: 12px 18px; font-size: 15px; }
 .plate-btn__text { white-space: nowrap; }
@@ -352,7 +354,7 @@ a { color: var(--text-bright); }
   align-items: start;
 }
 .fault:last-child { border-bottom: var(--rule); }
-.fault__no {
+.fault .fault__no {
   font-family: var(--mono);
   font-size: 12px;
   letter-spacing: 0.1em;
@@ -475,6 +477,7 @@ a { color: var(--text-bright); }
 .plate__desc { font-size: 15px; color: var(--label); line-height: 1.55; max-width: 68ch; }
 .plate__note {
   grid-column: 2;
+  max-width: 68ch;
   font-family: var(--mono);
   font-size: 12px;
   letter-spacing: 0.06em;
@@ -485,7 +488,7 @@ a { color: var(--text-bright); }
 
 .cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--edge-soft); border: 1px solid var(--edge-soft); border-radius: 3px; }
 .card { background: var(--panel); padding: clamp(24px, 3vw, 34px); }
-.card__k {
+.card .card__k {
   font-family: var(--mono);
   font-size: 11.5px;
   letter-spacing: 0.16em;
@@ -639,3 +642,15 @@ a { color: var(--text-bright); }
   .plate-btn { flex-wrap: wrap; }
   .plate-btn__meta { flex-basis: 100%; }
 }
+
+
+/* Browser surfaces: default blue selection and a system scrollbar undo a committed panel faster
+   than any single component does. */
+::selection { background: var(--signal); color: #14161a; }
+::marker { color: var(--signal); }
+input, textarea { caret-color: var(--signal); }
+
+.ghost-btn:active { background: var(--recess); box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6); }
+
+/* Plate II's caption sits under a figure that shares its row with prose. */
+.plate--tall .plate__cap { grid-template-columns: 88px minmax(0, 1fr); }

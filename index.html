@@ -33,9 +33,8 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 <header class="panel panel--head">
   <div class="wrap head">
     <div class="head__id">
-      <p class="stencil">Serial 0.1.0 · Pre-release</p>
       <h1 class="brand">Porterage</h1>
-      <p class="model">MTP transfer unit · Android to macOS · over cable</p>
+      <p class="model">Pre-release 0.1.0 · Android to macOS, over cable</p>
       <p class="lede">
         A Mac app that copies files to and from an Android phone. It speaks the phone's transfer
         protocol directly, which is why the numbers on this page are not the ones you are used to.
@@ -44,19 +43,19 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
         <a class="plate-btn" href="https://github.com/aiusmarcusx/porterage/releases/latest">
           <span class="plate-btn__lamp" aria-hidden="true"></span>
           <span class="plate-btn__text">Download for macOS</span>
-          <span class="plate-btn__meta">Universal · 2.8 MB</span>
         </a>
         <a class="ghost-btn" href="https://github.com/aiusmarcusx/porterage">Read the source</a>
       </div>
       <p class="caveat">
         <span class="dot dot--alarm" aria-hidden="true"></span>
-        <span>Not yet notarised by Apple. First launch needs a right-click → Open.
+        <span>Pre-release: the first build is not published yet, and it is not notarised by Apple —
+        first launch will need a right-click → Open.
         <a href="#limits">What else it does not do</a></span>
       </p>
     </div>
 
     <div class="head__meter">
-      <div class="gauge" role="img" aria-label="Measured read speed: 29 megabytes per second, on a Redmi 9T over USB 2.0">
+      <div class="gauge" role="img" aria-label="Measured read speed: 29 mebibytes per second, on a Redmi 9T">
         <p class="gauge__label">Read from phone</p>
         <div class="ladder" data-lit="17">
           <span></span><span></span><span></span><span></span><span></span><span></span>
@@ -64,8 +63,8 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
           <span></span><span></span><span></span><span></span><span></span><span></span>
           <span></span><span></span><span></span><span></span><span></span><span></span>
         </div>
-        <p class="gauge__scale"><span>0</span><span>40 MB/s full scale</span></p>
-        <p class="gauge__read"><strong>29</strong><em>MB/s</em></p>
+        <p class="gauge__scale"><span>0</span><span>40 MiB/s full scale</span></p>
+        <p class="gauge__read"><strong>29</strong><em>MiB/s</em></p>
         <p class="gauge__foot">Write to phone tops out at 15. The phone's flash is the limit, not the cable.</p>
       </div>
     </div>
@@ -75,8 +74,8 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
     <div class="wrap specrow__grid">
       <div class="spec"><p class="spec__k">Folder listing</p><p class="spec__v">0.56<em>s</em></p><p class="spec__n">345 files · 3.2 s the usual way</p></div>
       <div class="spec"><p class="spec__k">Small files</p><p class="spec__v">53<em>ms</em></p><p class="spec__n">each, and it stays there</p></div>
-      <div class="spec"><p class="spec__k">Photo library</p><p class="spec__v">79<em>s</em></p><p class="spec__n">324 photos · 2 GB</p></div>
-      <div class="spec"><p class="spec__k">Requires</p><p class="spec__v">14<em>+</em></p><p class="spec__n">macOS · Apple silicon &amp; Intel</p></div>
+      <div class="spec"><p class="spec__k">Photo library</p><p class="spec__v">79<em>s</em></p><p class="spec__n">324 photos · 2 GiB</p></div>
+      <div class="spec"><p class="spec__k">Requires</p><p class="spec__v">14<em>+</em></p><p class="spec__n">macOS · universal · under 3 MB</p></div>
     </div>
   </div>
 </header>
@@ -86,7 +85,6 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 <section class="panel" id="faults">
   <div class="wrap">
     <div class="sechead">
-      <p class="stencil">Section 01</p>
       <h2>Three ways the other tools fail</h2>
       <p class="sechead__sub">
         Each one was reproduced on a Redmi 9T against a MacBook Air M1, and each is the reason a
@@ -160,7 +158,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
       <figcaption class="plate__cap">
         <span class="plate__id">Plate I</span>
         <span class="plate__desc">Photo grid. Thumbnails arrive in 14 ms each; files that carry none — screenshots, downloads — are fetched and scaled on the Mac instead of showing a blank tile.</span>
-        <span class="plate__note">Images staged for this screenshot. Not a real photo library.</span>
+        <span class="plate__note">Placeholder images, staged on the phone for this screenshot so the owner's own photo library stayed out of it. The app and the thumbnails are real.</span>
       </figcaption>
     </figure>
   </div>
@@ -169,7 +167,6 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 <section class="panel" id="verify">
   <div class="wrap">
     <div class="sechead">
-      <p class="stencil">Section 02</p>
       <h2>What it does when things go wrong</h2>
       <p class="sechead__sub">Interruption is the normal case with a cable. It is designed for, not apologised for.</p>
     </div>
@@ -183,7 +180,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
           the real boundary instead of a guess. Verified in both directions by comparing SHA-256 of the
           finished file against the original.
         </p>
-        <p class="card__read">Resumed upload <strong>19.4</strong> MB/s · resumed download <strong>28.8</strong> MB/s</p>
+        <p class="card__read">Resumed upload <strong>19.4</strong> MiB/s · resumed download <strong>28.8</strong> MiB/s</p>
       </article>
 
       <article class="card">
@@ -191,10 +188,10 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
         <h3>Keeps going at full speed</h3>
         <p>
           Android blocks a computer from <em>starting</em> a session on a locked phone, but it does not
-          touch one already running. Eleven consecutive 512 MB reads finished with the screen locked
+          touch one already running. Eleven consecutive 512 MiB reads finished with the screen locked
           the whole time, at the same speed as unlocked, with no errors.
         </p>
-        <p class="card__read">Locked throughput <strong>29.1–29.5</strong> MB/s · 0 failures</p>
+        <p class="card__read">Locked throughput <strong>29.1–29.5</strong> MiB/s · 0 failures</p>
       </article>
 
       <article class="card">
@@ -205,7 +202,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
           minutes later. Its reported free space, though, is exact to the byte — so Porterage checks
           first and tells you how much is missing.
         </p>
-        <p class="card__read">64 MB written moved free space by <strong>64.1</strong> MB, and back on delete</p>
+        <p class="card__read">64 MiB written moved free space by <strong>64.1</strong> MiB, and back on delete</p>
       </article>
 
       <article class="card">
@@ -225,10 +222,9 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 <section class="panel panel--split">
   <div class="wrap split">
     <div class="split__text">
-      <p class="stencil">Plate II</p>
       <h2>Drag a row straight into the Finder</h2>
       <p>
-        The file is fetched when you let go, not when you pick it up. Start the drag on a 20 MB photo
+        The file is fetched when you let go, not when you pick it up. Start the drag on a large photo
         and it moves with the cursor immediately; the copy happens once the drop lands somewhere.
       </p>
       <p>
@@ -236,8 +232,8 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
         new folder, select all, search that ignores accents, and sorting by name, size or date.
       </p>
       <dl class="minispec">
-        <div><dt>Copied out</dt><dd>29 MB/s</dd></div>
-        <div><dt>Copied in</dt><dd>15 MB/s</dd></div>
+        <div><dt>Copied out</dt><dd>29 MiB/s</dd></div>
+        <div><dt>Copied in</dt><dd>15 MiB/s</dd></div>
         <div><dt>Deleted</dt><dd>25 ms each</dd></div>
       </dl>
     </div>
@@ -247,6 +243,10 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
         <span class="reg reg--tl" aria-hidden="true"></span><span class="reg reg--tr" aria-hidden="true"></span>
         <span class="reg reg--bl" aria-hidden="true"></span><span class="reg reg--br" aria-hidden="true"></span>
       </div>
+      <figcaption class="plate__cap">
+        <span class="plate__id">Plate II</span>
+        <span class="plate__desc">List view, sorted by name. Folders lead whatever the sort.</span>
+      </figcaption>
     </figure>
   </div>
 </section>
@@ -254,7 +254,6 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 <section class="panel" id="bench">
   <div class="wrap">
     <div class="sechead">
-      <p class="stencil">Section 03</p>
       <h2>Conditions of measurement</h2>
       <p class="sechead__sub">
         One phone, one Mac, one cable. Your hardware will differ — these are the conditions the numbers
@@ -263,10 +262,9 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
     </div>
     <dl class="conditions">
       <div><dt>Phone</dt><dd>Redmi 9T, MIUI, Android 11</dd></div>
-      <div><dt>Computer</dt><dd>MacBook Air M1, macOS 26.5</dd></div>
-      <div><dt>Link</dt><dd>USB 2.0, the phone's own cable</dd></div>
-      <div><dt>Sustained</dt><dd>39 consecutive 512 MB round trips, about 20 GB, no errors and no drift</dd></div>
-      <div><dt>Large files</dt><dd>4 402 341 478 bytes transferred and read back correctly past the 4 GB mark</dd></div>
+      <div><dt>Computer</dt><dd>MacBook Air M1, macOS 26.5.1</dd></div>
+      <div><dt>Sustained</dt><dd>39 consecutive 512 MiB round trips, about 20 GiB, no errors and no drift</dd></div>
+      <div><dt>Large files</dt><dd>4 402 341 478 bytes transferred and read back correctly past the 4 GiB mark</dd></div>
       <div><dt>First listing</dt><dd>About 17 s after plugging in, while the phone indexes ~34 000 objects. Every listing after that, 0.17 s</dd></div>
     </dl>
   </div>
@@ -275,7 +273,6 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 <section class="panel panel--limits" id="limits">
   <div class="wrap">
     <div class="sechead">
-      <p class="stencil">Section 04</p>
       <h2>What it does not do</h2>
       <p class="sechead__sub">Stated here because finding out later is worse.</p>
     </div>

@@ -1,0 +1,245 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-13T00:00:00Z",
+  "title": "Design System: Porterage",
+  "extensions": {
+    "colorMeta": {
+      "signal": {
+        "role": "primary",
+        "displayName": "Signal Amber",
+        "canonical": "#ffa51f",
+        "tonalRamp": ["#241700", "#3d2700", "#5c3a00", "#8a5702", "#b87404", "#e09313", "#ffb44b", "#ffe2b8"]
+      },
+      "signal-deep": {
+        "role": "primary",
+        "displayName": "Signal Deep",
+        "canonical": "#c97a05"
+      },
+      "signal-ghost": {
+        "role": "primary",
+        "displayName": "Signal Ghost (unlit segment)",
+        "canonical": "rgba(255, 165, 31, 0.14)"
+      },
+      "ok": {
+        "role": "secondary",
+        "displayName": "Status Green",
+        "canonical": "#5cc47d",
+        "tonalRamp": ["#0c2415", "#133a23", "#1c5433", "#276f45", "#348f58", "#5cc47d", "#8ad9a3", "#c2ecd0"]
+      },
+      "alarm": {
+        "role": "secondary",
+        "displayName": "Alarm Red",
+        "canonical": "#e4544a",
+        "tonalRamp": ["#2a0d0b", "#471714", "#6b221e", "#93302a", "#bb3f37", "#e4544a", "#f08078", "#f8bab5"]
+      },
+      "panel": {
+        "role": "neutral",
+        "displayName": "Anodized Panel",
+        "canonical": "#17181a",
+        "tonalRamp": ["#0b0c0d", "#101113", "#17181a", "#1f2124", "#26292c", "#34373b", "#4a4e54", "#6d7278"]
+      },
+      "panel-high": {
+        "role": "neutral",
+        "displayName": "Panel High (lightest ground in the system)",
+        "canonical": "#1f2124"
+      },
+      "panel-low": {
+        "role": "neutral",
+        "displayName": "Panel Low (banded section ground)",
+        "canonical": "#101113"
+      },
+      "recess": {
+        "role": "neutral",
+        "displayName": "Milled Recess",
+        "canonical": "#0b0c0d"
+      },
+      "edge": {
+        "role": "neutral",
+        "displayName": "Edge (rail and ghost-button border)",
+        "canonical": "#34373b"
+      },
+      "edge-soft": {
+        "role": "neutral",
+        "displayName": "Edge Soft (every other hairline)",
+        "canonical": "#26292c"
+      },
+      "text-bright": {
+        "role": "neutral",
+        "displayName": "Engraved White",
+        "canonical": "#f2f4f6",
+        "tonalRamp": ["#2a2d30", "#3f4347", "#575b60", "#70757b", "#8f949a", "#b2b7bd", "#d7dbe0", "#f2f4f6"]
+      },
+      "text": {
+        "role": "neutral",
+        "displayName": "Panel Text",
+        "canonical": "#d7dbe0"
+      },
+      "label": {
+        "role": "neutral",
+        "displayName": "Label Grey",
+        "canonical": "#9aa0a8",
+        "tonalRamp": ["#1a1c1f", "#2a2e33", "#3d4249", "#53585f", "#6b7178", "#888d95", "#9aa0a8", "#c3c8ce"]
+      },
+      "label-dim": {
+        "role": "neutral",
+        "displayName": "Screen-Print Grey",
+        "canonical": "#888d95"
+      },
+      "key-face": {
+        "role": "neutral",
+        "displayName": "Key Face (text on amber)",
+        "canonical": "#14161a"
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Engraved Wordmark", "purpose": "The Porterage wordmark only, with its two-sided engraving shadow. Never a section heading." },
+      "headline": { "displayName": "Section Head", "purpose": "Section headings, capped at 62ch, always followed by a conditions subhead." },
+      "title": { "displayName": "Fault / Card Title", "purpose": "The behaviour being claimed, inside a fault row or a card." },
+      "reading": { "displayName": "Measured Value", "purpose": "Any number that came from a measurement. Mono, negative tracking, unit demoted beside it." },
+      "body": { "displayName": "Panel Prose", "purpose": "Body copy and lede. 17px desktop, 16px below 900px." },
+      "label": { "displayName": "Screen-Printed Key", "purpose": "Every key in every key/value pair. Tracked uppercase mono; a panel legend, not a kicker." }
+    },
+    "shadows": [
+      { "name": "instrument-well", "value": "inset 0 2px 6px rgba(0, 0, 0, 0.75)", "purpose": "Gauge interiors — the surface is milled into the panel." },
+      { "name": "readout-well", "value": "inset 0 2px 6px rgba(0, 0, 0, 0.6)", "purpose": "Readout panels and sunken ghost-button active state." },
+      { "name": "machined-face", "value": "inset 0 1px 0 rgba(255, 255, 255, 0.05)", "purpose": "Raised faces: ghost button, plate frame." },
+      { "name": "key-travel", "value": "inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 2px 0 #000", "purpose": "Primary Download key at rest, sitting 2px proud. Collapses to 0 on :active." },
+      { "name": "key-halo", "value": "inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 2px 0 #000, 0 0 22px rgba(255, 165, 31, 0.28)", "purpose": "Primary key on hover." },
+      { "name": "segment-emission", "value": "0 0 10px rgba(255, 165, 31, 0.45)", "purpose": "Lit ladder cells and amber bar fills. Emission, not decoration." },
+      { "name": "segment-emission-alarm", "value": "0 0 10px rgba(228, 84, 74, 0.35)", "purpose": "The losing bar in a comparison readout." },
+      { "name": "lamp-emission-amber", "value": "0 0 8px rgba(255, 240, 200, 0.8)", "purpose": "The 8px lamp glyph on the primary key." },
+      { "name": "lamp-emission-ok", "value": "0 0 8px rgba(92, 196, 125, 0.5)", "purpose": "Green status dot." },
+      { "name": "lamp-emission-alarm", "value": "0 0 8px rgba(228, 84, 74, 0.55)", "purpose": "Red status dot." },
+      { "name": "engraved-text", "value": "0 1px 0 rgba(0, 0, 0, 0.8), 0 -1px 0 rgba(255, 255, 255, 0.07)", "purpose": "Wordmark only: a dark cut above, a lit machined edge below." }
+    ],
+    "motion": [
+      { "name": "key-press", "value": "transform 0.08s linear, box-shadow 0.08s linear", "purpose": "The only transition in the system. Primary key travel on hover/active." },
+      { "name": "ignite-step", "value": "34ms per cell", "purpose": "Ladder cells light one at a time on first intersection (threshold 0.4)." },
+      { "name": "ignite-settle", "value": "90ms per cell, final four", "purpose": "Slowed tail so the ladder reads as a needle settling, not a progress bar." },
+      { "name": "reduced-motion", "value": "0.001ms", "purpose": "prefers-reduced-motion collapses all transitions and lights the ladder instantly at full value." }
+    ],
+    "breakpoints": [
+      { "name": "conditions", "value": "860px" },
+      { "name": "narrow", "value": "900px" },
+      { "name": "phone", "value": "560px" },
+      { "name": "wrap", "value": "1160px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Download Plate (primary button)",
+      "kind": "button",
+      "refersTo": "btn-plate",
+      "description": "The one primary control. A machined amber key with a lit lamp glyph, sitting 2px proud of the panel; it travels on press.",
+      "html": "<a class=\"ds-btn-plate\" href=\"#\"><span class=\"ds-btn-plate__lamp\" aria-hidden=\"true\"></span><span>Download for macOS</span></a>",
+      "css": ".ds-btn-plate { display: inline-flex; align-items: center; gap: 12px; padding: 15px 22px; background: linear-gradient(180deg, var(--signal, #ffa51f) 0%, var(--signal-deep, #c97a05) 100%); color: #14161a; text-decoration: none; font-family: Archivo, -apple-system, sans-serif; font-size: 17px; font-weight: 700; letter-spacing: -0.01em; border: 1px solid #8f5a04; border-radius: 2px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.45), 0 2px 0 #000; transition: transform 0.08s linear, box-shadow 0.08s linear; } .ds-btn-plate:hover { box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 2px 0 #000, 0 0 22px rgba(255,165,31,0.28); } .ds-btn-plate:active { transform: translateY(2px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), 0 0 0 #000; } .ds-btn-plate:focus-visible { outline: 2px solid var(--signal, #ffa51f); outline-offset: 3px; } .ds-btn-plate__lamp { width: 8px; height: 8px; flex: none; border-radius: 50%; background-image: radial-gradient(circle, #fff6df 0%, #ffcf72 60%, #b77300 100%); box-shadow: inset 0 0 0 1px rgba(0,0,0,0.5), 0 0 8px rgba(255,240,200,0.8); }"
+    },
+    {
+      "name": "Ghost Key (secondary button)",
+      "kind": "button",
+      "refersTo": "btn-ghost",
+      "description": "A raised machined face for the secondary route. Sinks into the panel on press instead of travelling.",
+      "html": "<a class=\"ds-btn-ghost\" href=\"#\">Read the source</a>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; padding: 15px 22px; border: 1px solid var(--edge, #34373b); border-radius: 2px; color: var(--text, #d7dbe0); text-decoration: none; font-family: Archivo, -apple-system, sans-serif; font-size: 17px; font-weight: 500; background: linear-gradient(180deg, var(--panel-high, #1f2124), var(--panel-low, #101113)); box-shadow: inset 0 1px 0 rgba(255,255,255,0.05); } .ds-btn-ghost:hover { border-color: var(--label-dim, #888d95); color: var(--text-bright, #f2f4f6); } .ds-btn-ghost:active { background: var(--recess, #0b0c0d); box-shadow: inset 0 2px 4px rgba(0,0,0,0.6); } .ds-btn-ghost:focus-visible { outline: 2px solid var(--signal, #ffa51f); outline-offset: 3px; }"
+    },
+    {
+      "name": "Throughput Gauge",
+      "kind": "custom",
+      "refersTo": "gauge",
+      "description": "The signature instrument. A 24-cell segment ladder in a milled well: unlit cells are drawn as the rest of a stated scale, the scale ends are labelled, and the reading carries its unit and its opposite-direction note.",
+      "html": "<div class=\"ds-gauge\" role=\"img\" aria-label=\"Measured read speed: 29 mebibytes per second\"><p class=\"ds-gauge__label\">Read from phone</p><div class=\"ds-ladder\"><span class=\"lit\"></span><span class=\"lit\"></span><span class=\"lit\"></span><span class=\"lit\"></span><span class=\"lit\"></span><span class=\"lit\"></span><span class=\"lit\"></span><span class=\"lit\"></span><span class=\"lit\"></span><span class=\"lit\"></span><span class=\"lit\"></span><span class=\"lit\"></span><span class=\"lit\"></span><span class=\"lit\"></span><span class=\"lit\"></span><span class=\"lit\"></span><span class=\"lit\"></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><p class=\"ds-gauge__scale\"><span>0</span><span>40 MiB/s full scale</span></p><p class=\"ds-gauge__read\"><strong>29</strong><em>MiB/s</em></p><p class=\"ds-gauge__foot\">Write to phone tops out at 15. The phone's flash is the limit, not the cable.</p></div>",
+      "css": ".ds-gauge { background: linear-gradient(180deg, var(--recess, #0b0c0d), #0e0f11); border: 1px solid var(--edge-soft, #26292c); border-radius: 3px; padding: 22px 22px 18px; box-shadow: inset 0 2px 6px rgba(0,0,0,0.75); max-width: 380px; } .ds-gauge__label { font-family: 'Azeret Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--label-dim, #888d95); margin: 0 0 16px; } .ds-ladder { display: grid; grid-template-columns: repeat(24, 1fr); gap: 3px; height: 46px; } .ds-ladder span { background: rgba(255,165,31,0.14); border-radius: 1px; } .ds-ladder span.lit { background: linear-gradient(180deg, #ffd487, var(--signal, #ffa51f)); box-shadow: 0 0 10px rgba(255,165,31,0.45); } .ds-gauge__scale { display: flex; justify-content: space-between; margin: 9px 0 0; font-family: 'Azeret Mono', ui-monospace, monospace; font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--label-dim, #888d95); } .ds-gauge__read { display: flex; align-items: baseline; gap: 8px; margin: 18px 0 0; font-family: 'Azeret Mono', ui-monospace, monospace; color: var(--signal, #ffa51f); } .ds-gauge__read strong { font-size: 46px; font-weight: 500; letter-spacing: -0.03em; line-height: 1; } .ds-gauge__read em { font-style: normal; font-size: 13px; letter-spacing: 0.12em; color: var(--label, #9aa0a8); } .ds-gauge__foot { margin: 14px 0 0; padding-top: 12px; border-top: 1px solid var(--edge-soft, #26292c); font-family: Archivo, -apple-system, sans-serif; font-size: 13px; line-height: 1.5; color: var(--label, #9aa0a8); }"
+    },
+    {
+      "name": "Comparison Readout",
+      "kind": "custom",
+      "refersTo": "readout",
+      "description": "Two measurements on one shared scale inside a milled well. The fill width is the real ratio, never a chosen number; the losing row switches to alarm red.",
+      "html": "<div class=\"ds-readout\"><div class=\"ds-readout__row\"><span class=\"ds-readout__k\">Queue drained</span><span class=\"ds-bar\"><i style=\"--w:4.8%\"></i></span><span class=\"ds-readout__v\">53 ms<em>per file</em></span></div><div class=\"ds-readout__row ds-readout__row--bad\"><span class=\"ds-readout__k\">Not drained</span><span class=\"ds-bar\"><i style=\"--w:100%\"></i></span><span class=\"ds-readout__v\">1 100 ms<em>per file</em></span></div><p class=\"ds-readout__note\">Same phone, same 400 files. Undrained, it wedged for good at roughly 211 objects.</p></div>",
+      "css": ".ds-readout { background: var(--recess, #0b0c0d); border: 1px solid var(--edge-soft, #26292c); border-radius: 3px; padding: 20px; box-shadow: inset 0 2px 6px rgba(0,0,0,0.6); max-width: 440px; } .ds-readout__row { display: grid; grid-template-columns: 116px minmax(0,1fr) auto; gap: 14px; align-items: center; margin-bottom: 14px; } .ds-readout__k { font-family: 'Azeret Mono', ui-monospace, monospace; font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--label-dim, #888d95); } .ds-bar { display: block; height: 12px; background: rgba(255,165,31,0.14); border-radius: 1px; overflow: hidden; } .ds-bar i { display: block; height: 100%; width: var(--w); background: linear-gradient(180deg, #ffd487, var(--signal, #ffa51f)); box-shadow: 0 0 10px rgba(255,165,31,0.4); } .ds-readout__row--bad .ds-bar i { background: linear-gradient(180deg, #f08078, var(--alarm, #e4544a)); box-shadow: 0 0 10px rgba(228,84,74,0.35); } .ds-readout__v { font-family: 'Azeret Mono', ui-monospace, monospace; font-size: 14px; color: var(--text-bright, #f2f4f6); white-space: nowrap; } .ds-readout__v em { font-style: normal; display: block; font-size: 11.5px; color: var(--label-dim, #888d95); letter-spacing: 0.08em; } .ds-readout__note { margin: 16px 0 0; padding-top: 13px; border-top: 1px solid var(--edge-soft, #26292c); font-family: Archivo, -apple-system, sans-serif; font-size: 13px; line-height: 1.5; color: var(--label-dim, #888d95); }"
+    },
+    {
+      "name": "Status Lamps",
+      "kind": "custom",
+      "refersTo": "lamp",
+      "description": "The qualitative alternative to a readout, for a comparison that is behavioural rather than numeric. A glowing dot in a recessed strip whose border is tinted to the lamp's own colour.",
+      "html": "<div class=\"ds-lamps\"><p class=\"ds-lamp ds-lamp--alarm\"><span class=\"ds-dot ds-dot--alarm\" aria-hidden=\"true\"></span>Silently overwritten elsewhere</p><p class=\"ds-lamp ds-lamp--ok\"><span class=\"ds-dot ds-dot--ok\" aria-hidden=\"true\"></span>Refused here, with the conflicting name shown</p></div>",
+      "css": ".ds-lamps { display: grid; gap: 10px; align-content: start; max-width: 400px; } .ds-lamp { display: flex; align-items: baseline; gap: 10px; margin: 0; font-family: 'Azeret Mono', ui-monospace, monospace; font-size: 12.5px; line-height: 1.5; padding: 14px 16px; border: 1px solid var(--edge-soft, #26292c); border-radius: 3px; background: var(--recess, #0b0c0d); color: var(--label, #9aa0a8); } .ds-lamp--ok { border-color: rgba(92,196,125,0.28); } .ds-lamp--alarm { border-color: rgba(228,84,74,0.28); } .ds-dot { width: 7px; height: 7px; flex: none; border-radius: 50%; display: inline-block; transform: translateY(-1px); } .ds-dot--alarm { background: var(--alarm, #e4544a); box-shadow: 0 0 8px rgba(228,84,74,0.55); } .ds-dot--ok { background: var(--ok, #5cc47d); box-shadow: 0 0 8px rgba(92,196,125,0.5); }"
+    },
+    {
+      "name": "Condition Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Amber key naming the failure condition, title naming the behaviour, prose, then a hairline-topped mono reading line with the measured figures lifted bright. Cards sit in a 1px-gap grid over an edge-soft ground — the gap is the divider.",
+      "html": "<div class=\"ds-cards\"><article class=\"ds-card\"><p class=\"ds-card__k\">Cable pulled mid-copy</p><h3>Resumes at the exact byte</h3><p>The phone reports precisely how much of the file it already holds, so a resumed copy starts at the real boundary instead of a guess.</p><p class=\"ds-card__read\">Resumed upload <strong>19.4</strong> MiB/s · resumed download <strong>28.8</strong> MiB/s</p></article></div>",
+      "css": ".ds-cards { display: grid; gap: 1px; background: var(--edge-soft, #26292c); border: 1px solid var(--edge-soft, #26292c); border-radius: 3px; max-width: 460px; } .ds-card { background: var(--panel, #17181a); padding: 34px; font-family: Archivo, -apple-system, sans-serif; } .ds-card .ds-card__k { font-family: 'Azeret Mono', ui-monospace, monospace; font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--signal, #ffa51f); margin: 0 0 14px; } .ds-card h3 { font-size: 23px; font-weight: 600; letter-spacing: -0.018em; line-height: 1.22; margin: 0 0 12px; color: var(--text-bright, #f2f4f6); } .ds-card p { margin: 0; color: var(--label, #9aa0a8); font-size: 15.5px; line-height: 1.6; } .ds-card .ds-card__read { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--edge-soft, #26292c); font-family: 'Azeret Mono', ui-monospace, monospace; font-size: 13px; letter-spacing: 0.04em; color: var(--label-dim, #888d95); } .ds-card .ds-card__read strong { color: var(--text-bright, #f2f4f6); font-weight: 500; }"
+    },
+    {
+      "name": "Spec Cell Row",
+      "kind": "custom",
+      "refersTo": "spec",
+      "description": "The compressed form of the gauge: screen-printed key, mono value with demoted unit, and a note carrying the sample size or the comparison. Cells divide by left borders overlapped at -1px.",
+      "html": "<div class=\"ds-specrow\"><div class=\"ds-spec\"><p class=\"ds-spec__k\">Folder listing</p><p class=\"ds-spec__v\">0.56<em>s</em></p><p class=\"ds-spec__n\">345 files · 3.2 s the usual way</p></div><div class=\"ds-spec\"><p class=\"ds-spec__k\">Small files</p><p class=\"ds-spec__v\">53<em>ms</em></p><p class=\"ds-spec__n\">each, and it stays there</p></div></div>",
+      "css": ".ds-specrow { display: grid; grid-template-columns: repeat(2, 1fr); background: var(--panel-low, #101113); border-top: 1px solid var(--edge-soft, #26292c); font-family: Archivo, -apple-system, sans-serif; } .ds-spec { padding: 26px 0 26px 24px; border-left: 1px solid var(--edge-soft, #26292c); margin-left: -1px; } .ds-spec:first-child { border-left: 0; padding-left: 0; margin-left: 0; } .ds-spec__k { font-family: 'Azeret Mono', ui-monospace, monospace; font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--label-dim, #888d95); margin: 0 0 10px; } .ds-spec__v { font-family: 'Azeret Mono', ui-monospace, monospace; font-size: 32px; font-weight: 500; letter-spacing: -0.03em; color: var(--text-bright, #f2f4f6); margin: 0; line-height: 1; } .ds-spec__v em { font-style: normal; font-size: 14px; color: var(--label, #9aa0a8); margin-left: 3px; } .ds-spec__n { margin: 10px 0 0; font-size: 13px; color: var(--label, #9aa0a8); line-height: 1.45; }"
+    },
+    {
+      "name": "Registered Plate",
+      "kind": "custom",
+      "refersTo": "plate-frame",
+      "description": "How a screenshot is mounted: a machined frame, four corner registration crosshairs, a black 1px aperture, and a caption with an amber Plate number, a description, and a provenance note when the contents were staged.",
+      "html": "<figure class=\"ds-plate\"><div class=\"ds-plate__frame\"><div class=\"ds-plate__img\"></div><span class=\"ds-reg ds-reg--tl\" aria-hidden=\"true\"></span><span class=\"ds-reg ds-reg--tr\" aria-hidden=\"true\"></span><span class=\"ds-reg ds-reg--bl\" aria-hidden=\"true\"></span><span class=\"ds-reg ds-reg--br\" aria-hidden=\"true\"></span></div><figcaption class=\"ds-plate__cap\"><span class=\"ds-plate__id\">Plate I</span><span class=\"ds-plate__desc\">Photo grid. Thumbnails arrive in 14 ms each.</span><span class=\"ds-plate__note\">Placeholder images, staged on the phone for this screenshot.</span></figcaption></figure>",
+      "css": ".ds-plate { margin: 0; max-width: 460px; } .ds-plate__frame { position: relative; padding: 22px; background: linear-gradient(180deg, var(--panel-high, #1f2124), var(--panel-low, #101113)); border: 1px solid var(--edge-soft, #26292c); border-radius: 3px; } .ds-plate__img { height: 190px; border: 1px solid #000; border-radius: 2px; background: linear-gradient(140deg, #202428, #15181b 60%, #1b1f23); } .ds-reg { position: absolute; width: 13px; height: 13px; opacity: 0.55; } .ds-reg::before, .ds-reg::after { content: \"\"; position: absolute; background: var(--label-dim, #888d95); } .ds-reg::before { left: 0; right: 0; top: 6px; height: 1px; } .ds-reg::after { top: 0; bottom: 0; left: 6px; width: 1px; } .ds-reg--tl { top: 5px; left: 5px; } .ds-reg--tr { top: 5px; right: 5px; } .ds-reg--bl { bottom: 5px; left: 5px; } .ds-reg--br { bottom: 5px; right: 5px; } .ds-plate__cap { display: grid; grid-template-columns: 88px minmax(0,1fr); gap: 8px 22px; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--edge-soft, #26292c); font-family: Archivo, -apple-system, sans-serif; } .ds-plate__id { font-family: 'Azeret Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--signal, #ffa51f); } .ds-plate__desc { font-size: 15px; color: var(--label, #9aa0a8); line-height: 1.55; } .ds-plate__note { grid-column: 2; font-family: 'Azeret Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.06em; color: var(--label-dim, #888d95); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Anodized Faceplate",
+    "overview": "This is not a page with instruments drawn on it. It is a faceplate: a single machined graphite panel, screen-printed and engraved, that happens to be scrollable. Nothing floats above it and nothing sits on a card hovering in space — every element is set on the panel, into a milled recess, or beside an engraved rule. The whole surface carries a brushed-metal treatment (a 1-in-3px vertical grain at 1.4% white, under a slow 100° light gradient that runs from #141517 through #1a1c1f and back), so the ground itself has a direction and a light source before any component lands on it.\n\nThe system's argument is that a transfer tool earns trust the way measurement hardware does — by displaying what it measured, under stated conditions. Every number is therefore staged as a reading on an instrument rather than as a marketing figure: a segment ladder with a labelled full-scale, a pair of comparison bars on a shared axis, a key/value cell grid. Where a value is bad news, the same instrument shows it in alarm red at the same scale. This is why the visual density is high and the decoration count is zero: there is no illustration, no gradient blob, no glyph icon, no floating-screenshot-on-gradient hero. The two screenshots that exist are mounted as registered plates with corner marks and a Plate number, the way a lab figure is mounted.\n\nRestraint is enforced by materials, not by taste. Two typefaces. Three neutral grounds plus a recess. One accent (amber) that means \"this is a reading or the primary control\", one alarm red that means \"this is a stated failure\", one green that answers it. Corners are 1–3px, which reads as machined rather than soft. Motion exists only as state change: lamps and meters ignite, panels never move.",
+    "keyCharacteristics": [
+      "Full-bleed panels stacked against one continuous vertical rail; no floating cards",
+      "Every measured number set in mono at reading scale, with its unit and its conditions attached",
+      "Amber signal reserved for readings and the one primary control; red reserved for named faults",
+      "Recessed instrument wells (inset shadow) and emissive lamps (zero-offset glow) as the only depth",
+      "Machined corners (1px / 2px / 3px), hairline #26292c rules, no shadow used to lift anything"
+    ],
+    "rules": [
+      { "name": "The Amber Is A Reading Rule", "body": "Signal amber marks a measurement, the control that gets you the product, or the focus ring. It never appears on body prose, a heading, or a decorative divider. If a new element wants amber, ask what it measured; if the answer is nothing, it gets --label.", "section": "colors" },
+      { "name": "The One Alarm Rule", "body": "Red states a failure that the product actually names — nothing else. Green exists only to answer a red in the same component. Neither colour is available for emphasis, categorisation, or variety.", "section": "colors" },
+      { "name": "The Ground Ceiling Rule", "body": "No surface in this system is lighter than panel-high (#1f2124). The two label tones were raised specifically to clear WCAG AA 4.5:1 against every ground here, including the body gradient's lightest pixel (#1a1c1f) — they measure ≈5.2:1 at worst and ≈7:1 on the default panel. Introducing a lighter ground breaks both label tokens at once, and darkening the labels for \"subtlety\" breaks them directly. Neither move is available.", "section": "colors" },
+      { "name": "The Parent-In-Selector Rule", "body": "An accent-carrying label that lives inside a prose container must name its parent in the selector — .card .card__k, .fault .fault__no. Without the parent, .card p and .fault p win on specificity and silently strip the amber back to --label. This has already regressed once; any new key/value label inside a prose block inherits the same hazard.", "section": "colors" },
+      { "name": "The Two Families Rule", "body": "Archivo and Azeret Mono. There is no third family, no icon font, and no system display face. A new surface that needs a \"different feel\" changes weight, tracking or ground — not family.", "section": "typography" },
+      { "name": "The Measured Value Rule", "body": "Any number that came from a measurement is set in Azeret Mono with -0.03em tracking at reading scale, with its unit demoted beside it and its conditions stated within the same component. A number set in Archivo is, by definition, not a measurement in this system.", "section": "typography" },
+      { "name": "The Screen-Print Rule", "body": "Labels are tracked uppercase mono at 11.5–12px in --label-dim. This tracked-uppercase-mono voice is the panel's screen printing — a mechanical audit will flag it as an anti-pattern, and it stays, because it is the material. It is licensed for keys: a label may sit above a heading only when it names the real key of a key/value pair. It is not licensed as a decorative kicker or eyebrow over arbitrary prose.", "section": "typography" },
+      { "name": "The Full-Bleed Panel Rule", "body": ".panel never receives horizontal padding. Inset belongs to .wrap and .card. A panel that needs to look inset gets a ground colour, not a margin.", "section": "layout" },
+      { "name": "The One Rule Rule", "body": "Every divider in the document is the same 1px --edge-soft line, applied via the --rule token. Cells that share a border overlap by margin-left: -1px (or -1px top) so the shared edge stays exactly 1px. There is no second divider weight, colour, or style.", "section": "layout" },
+      { "name": "The Continuous Rail Rule", "body": "The rail is one line for the whole document, not a per-section ornament. It is never duplicated, never segmented per panel, and never shown below 900px.", "section": "layout" },
+      { "name": "The No-Float Rule", "body": "No element casts a shadow to appear above the panel. If depth is needed, recess it or light it. A soft outward drop shadow is out of world.", "section": "elevation" },
+      { "name": "The Glow-Is-Material Rule", "body": "A zero-offset glow is emission from something that is lit, so it is allowed only on an element whose state is \"on\": a lamp, a lit segment, a filled bar, the primary key on hover. It is not available as a general highlight, and it is never applied to text, panels, or borders.", "section": "elevation" },
+      { "name": "The 3px Ceiling Rule", "body": "1px segments, 2px controls, 3px housings, 50% lamps. No other radius exists; a pill, a 8px card, or a fully rounded control is out of world.", "section": "shapes" },
+      { "name": "The Mounted Image Rule", "body": "A screenshot is never placed directly on a panel. It goes inside a .plate__frame (gradient face, 1px edge-soft, 3px radius, clamp(12px, 2vw, 22px) padding), gets four registration marks, a black 1px aperture border, and a caption carrying a Plate number in amber, a description, and — when staged — a provenance note.", "section": "shapes" },
+      { "name": "The Ignite-Don't-Slide Rule", "body": "Motion in this system is state change on instruments; panels, sections and images never move, fade in, or parallax. The ladder is the only animation: on first intersection at 0.4 threshold it lights one cell at a time at 34ms, slowing to 90ms for the final four so it reads as a needle settling, then unobserves itself and holds. prefers-reduced-motion lights the same cells instantly, and the global reduced-motion rule collapses every transition to 0.001ms. Anything new either changes state in place or does not move.", "section": "components" },
+      { "name": "The Conditions-Attached Rule", "body": "A measurement never appears alone. Every instrument carries, inside its own borders, what was measured against what — the gauge's full-scale and opposite direction, the readout's \"same phone, same 400 files\", the spec cell's sample size, the card's reading line. A figure without its conditions is not finished.", "section": "components" }
+    ],
+    "dos": [
+      "Do stage every number as a reading on an instrument — gauge, readout, spec cell, or minispec — with its unit demoted and its conditions inside the same component.",
+      "Do draw the unreached part of any scale in signal-ghost and label the scale ends, so headroom reads as headroom.",
+      "Do compute every bar's --w from the real ratio, and keep all bars in the document on one scale.",
+      "Do let panels run full-bleed and put horizontal inset on .wrap and .card only.",
+      "Do use the --rule hairline for every divider, and overlap shared borders by -1px.",
+      "Do name the parent in selectors for accent-carrying labels (.card .card__k, .fault .fault__no), or the amber will be stripped by .card p / .fault p.",
+      "Do keep zero-offset glows for things that are actually lit — lamps, lit segments, filled bars, the primary key on hover.",
+      "Do mount every screenshot in a plate frame with four registration marks, a Plate number, and a provenance note when the contents were staged.",
+      "Do rely on the single global :focus-visible ring (2px --signal, 3px offset) rather than per-component focus styling."
+    ],
+    "donts": [
+      "Don't introduce a third typeface, an icon font, or a glyph/emoji used as UI. Lamps, ticks and registration marks are the icon vocabulary.",
+      "Don't darken --label or --label-dim, and don't add a ground lighter than panel-high (#1f2124) — both moves break the AA floor these tones were raised to clear.",
+      "Don't use amber on prose or headings, or red and green for anything but a stated failure and its answer.",
+      "Don't add a soft outward drop shadow, an elevation ramp, or any treatment that makes an element look lifted off the panel.",
+      "Don't animate position: no slides, fades, parallax, or reveal-on-scroll. Instruments change state; panels hold still.",
+      "Don't exceed a 3px radius (lamps at 50% excepted), or add a pill-shaped control.",
+      "Don't place a tracked-uppercase mono label above a heading unless it names the real key of a key/value pair — that voice is a panel legend, not a decorative kicker.",
+      "Don't reach for !important to win a specificity fight with .card p or .fault p; add the parent to the selector instead. The existing !important declarations on .readout__note, .card__read and .lamp are a debt in this build, not a pattern to copy.",
+      "Don't omit unlit ladder cells, drop the scale-end labels, or present a figure without the conditions it was taken under."
+    ]
+  }
+}
