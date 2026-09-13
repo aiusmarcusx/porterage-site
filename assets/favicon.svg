@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- The page's own instrument, reduced to three cells: two lit, one still ghosted.
+       Nothing else survives 16px, and the ladder is the one mark this page owns. -->
+  <rect width="32" height="32" rx="6" fill="#17181A"/>
+  <rect x="0.5" y="0.5" width="31" height="31" rx="5.5" fill="none" stroke="#34373B"/>
+  <rect x="7"  y="8" width="5" height="16" rx="1" fill="#FFA51F"/>
+  <rect x="14" y="8" width="5" height="16" rx="1" fill="#FFA51F"/>
+  <rect x="21" y="8" width="5" height="16" rx="1" fill="#3C3222"/>
+</svg>

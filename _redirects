@@ -1,0 +1,7 @@
+# One canonical host. Both www and the pages.dev preview domain serve the identical page otherwise,
+# which is three addresses competing for the same search result.
+https://www.porterage.app/*   https://porterage.app/:splat   301
+
+# Hold this one until the apex actually answers. Turning it on first would redirect the only
+# working address at a domain that is not serving yet, and take the site off the air.
+# https://porterage.pages.dev/* https://porterage.app/:splat 301

@@ -3,18 +3,52 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Porterage — move files between Android and a Mac, over the cable</title>
-<meta name="description" content="A native macOS app that copies files to and from an Android phone over USB. Every claim on this page is a measurement taken from real hardware.">
+<title>Porterage — Android file transfer for Mac, over the cable</title>
+<meta name="description" content="A free, open-source Mac app for Android file transfer over USB. Folder listings in 0.56s, 29 MiB/s off the phone, interrupted copies that resume byte-exact. Every number here was measured.">
 <meta name="theme-color" content="#17181A">
 <link rel="canonical" href="https://porterage.app/">
 <meta property="og:title" content="Porterage — Android to Mac, over the cable">
 <meta property="og:description" content="Folder listings in 0.56s instead of 3.2s. Small files that stay fast instead of wedging after 211. Interrupted copies that resume byte-exact.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://porterage.app/">
+<meta property="og:site_name" content="Porterage">
+<meta property="og:image" content="https://porterage.app/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Porterage — Android to macOS over the cable. A segment meter reading 29 MiB/s off the phone.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Porterage — Android to Mac, over the cable">
+<meta name="twitter:description" content="Folder listings in 0.56s instead of 3.2s. Small files that stay fast instead of wedging after 211. Interrupted copies that resume byte-exact.">
+<meta name="twitter:image" content="https://porterage.app/assets/og.png">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Azeret+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Porterage",
+  "url": "https://porterage.app/",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "macOS 14.0 or later",
+  "softwareVersion": "0.1.0",
+  "fileSize": "2.8 MB",
+  "downloadUrl": "https://github.com/aiusmarcusx/porterage/releases/latest",
+  "softwareHelp": "https://github.com/aiusmarcusx/porterage",
+  "license": "https://www.apache.org/licenses/LICENSE-2.0",
+  "isAccessibleForFree": true,
+  "description": "A native macOS app that copies files to and from an Android phone over the USB cable, implementing MTP directly rather than through libmtp.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
 </head>
 <body>
 <!--
@@ -104,8 +138,8 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
         </p>
         </div>
         <div class="readout">
-          <div class="readout__row"><span class="readout__k">Queue drained</span><span class="bar"><i style="--w:4.8%"></i></span><span class="readout__v">53 ms<em>per file</em></span></div>
-          <div class="readout__row readout__row--bad"><span class="readout__k">Not drained</span><span class="bar"><i style="--w:100%"></i></span><span class="readout__v">1 100 ms<em>per file</em></span></div>
+          <div class="readout__row"><span class="readout__k">Queue drained</span><span class="bar"><i data-w="4.8"></i></span><span class="readout__v">53 ms<em>per file</em></span></div>
+          <div class="readout__row readout__row--bad"><span class="readout__k">Not drained</span><span class="bar"><i data-w="100"></i></span><span class="readout__v">1 100 ms<em>per file</em></span></div>
           <p class="readout__note">Same phone, same 400 files. Undrained, it wedged for good at roughly 211 objects.</p>
         </div>
       </li>
@@ -121,8 +155,8 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
         </p>
         </div>
         <div class="readout">
-          <div class="readout__row"><span class="readout__k">Porterage</span><span class="bar"><i style="--w:17.5%"></i></span><span class="readout__v">0.56 s<em>345 files</em></span></div>
-          <div class="readout__row readout__row--bad"><span class="readout__k">One request per file</span><span class="bar"><i style="--w:100%"></i></span><span class="readout__v">3.2 s<em>345 files</em></span></div>
+          <div class="readout__row"><span class="readout__k">Porterage</span><span class="bar"><i data-w="17.5"></i></span><span class="readout__v">0.56 s<em>345 files</em></span></div>
+          <div class="readout__row readout__row--bad"><span class="readout__k">One request per file</span><span class="bar"><i data-w="100"></i></span><span class="readout__v">3.2 s<em>345 files</em></span></div>
           <p class="readout__note">Both bars share one scale. At ten thousand photos the gap is about 95 seconds against six.</p>
         </div>
       </li>
