@@ -1,2 +1,6 @@
 .impeccable/review/
 .DS_Store
+
+# Wrangler writes the Cloudflare account id and account NAME (which is an email address)
+# into here. Never commit it.
+.wrangler/
