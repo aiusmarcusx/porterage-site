@@ -161,11 +161,15 @@ on an instrument rather than as a marketing figure: a segment ladder with a labe
 pair of comparison bars on a shared axis, a key/value cell grid. Where a value is bad news, the same
 instrument shows it in alarm red at the same scale. This is why the visual density is high and the
 decoration count is zero: there is no illustration, no gradient blob, no glyph icon, no
-floating-screenshot-on-gradient hero. No screenshot ships at present: the two that existed were shot
-against a Vietnamese-language phone, and a page aimed at an English Tier 1 audience cannot show a
-breadcrumb reading "Bộ nhớ trong dùng chung". They were pulled rather than localised in place. What
-they argued is now argued the way everything else on the page is — as readings. The Mounted Image
-Rule below still governs, and applies the moment an English-locale screenshot exists.
+floating-screenshot-on-gradient hero. The two screenshots that ship are mounted as registered plates
+with corner marks and a Plate number, the way a lab figure is mounted.
+
+Both were shot against a Vietnamese-language phone and localised afterwards, pixel by pixel: the
+storage name the phone reports, and the decimal comma the Mac's region produces. Both of those are
+device-language output, so substituting them shows what the page's own audience would see. The dates
+were deliberately **not** touched — the app pins `dd/MM/yyyy HH:mm` in code, so that is what every
+user gets, and editing them would have put a claim on the page that the software does not honour.
+That line is the rule: localise what the device decides, never what the code decides.
 
 Restraint is enforced by materials, not by taste. Two typefaces. Three neutral grounds plus a recess.
 One accent (amber) that means "this is a reading or the primary control", one alarm red that means
@@ -302,7 +306,7 @@ Grids in use, all of them key/value or measurement structures:
 - Spec row: 4 equal columns divided by left borders with `margin-left: -1px`, first cell flush.
 - Fault: `64px / 1fr / 1fr` — index, prose, readout — separated by top rules rather than gaps.
 - Cards: 2×2 with `gap: 1px` over an `edge-soft` ground, so the gap *is* the hairline.
-- Split: `1fr / 0.78fr`, top-aligned, prose left and the inventory column right behind a left rule.
+- Split: `0.9fr / 1.1fr`, centre-aligned, prose and inventory left, Plate II right.
 - Chain: 3 equal columns under one continuous hairline path, tapped by a lamp per step.
 - Conditions: 2 columns of 128px-term definition rows, with a 40px gutter and a centre rule above
   860px.
@@ -474,13 +478,12 @@ Never use this for a set of peers — the cards grid is for those. The chain is 
 steps are tried in order and later ones are rarer.
 
 ### Plates
-Currently unused; see The Mounted Image Rule under Shapes and the note under North Star. The caption
+See The Mounted Image Rule under Shapes. The caption
 grid is `88px / 1fr`: amber Plate number, 68ch description, and an optional mono provenance note on
-the second column. Below 900px the caption stacks to one column and the note joins it. The CSS was
-removed with the images and is to be restored from this description when a screenshot returns.
+the second column. Below 900px the caption stacks to one column and the note joins it.
 
 ### Inventory column
-`.feats` is the secondary half of a split: an amber mono heading over hairline-separated rows, each
+`.feats` sits under the prose in a split's text column: an amber mono heading over hairline rows, each
 led by an 11px `signal-deep` tick. It answers "and what else" after the prose has made one claim, and
 it carries no numbers — anything measurable belongs in a readout, not here.
 

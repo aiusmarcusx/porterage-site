@@ -443,6 +443,52 @@ a { color: var(--text-bright); }
 .lamp--ok { border-color: rgba(92, 196, 125, 0.28); }
 .lamp--alarm { border-color: rgba(228, 84, 74, 0.28); }
 
+/* Plates ---------------------------------------------------------------- */
+
+.plate { margin: 0; }
+.plate__frame {
+  position: relative;
+  padding: clamp(12px, 2vw, 22px);
+  background: linear-gradient(180deg, var(--panel-high), var(--panel-low));
+  border: 1px solid var(--edge-soft);
+  border-radius: 3px;
+}
+.plate__frame img { border: 1px solid #000; border-radius: 2px; }
+
+/* Registration marks at each plate corner — the image is mounted, not floated. */
+.reg { position: absolute; width: 13px; height: 13px; opacity: 0.55; }
+.reg::before, .reg::after { content: ""; position: absolute; background: var(--label-dim); }
+.reg::before { left: 0; right: 0; top: 6px; height: 1px; }
+.reg::after { top: 0; bottom: 0; left: 6px; width: 1px; }
+.reg--tl { top: 5px; left: 5px; }
+.reg--tr { top: 5px; right: 5px; }
+.reg--bl { bottom: 5px; left: 5px; }
+.reg--br { bottom: 5px; right: 5px; }
+
+.plate__cap {
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr);
+  gap: 8px 22px;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: var(--rule);
+}
+.plate__id {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--signal);
+}
+.plate__desc { font-size: 15px; color: var(--label); line-height: 1.55; max-width: 68ch; }
+.plate__note {
+  grid-column: 2;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--label-dim);
+}
+
 /* Thumbnail chain — three routes tried in order, drawn as the signal path it is. The lamp at each
    tap dims as the route gets rarer: route 1 answers for most files, route 3 for about a seventh. */
 
@@ -640,9 +686,9 @@ a { color: var(--text-bright); }
 /* Split — prose on the left argues, the inventory on the right answers "and what else". */
 .split {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 0.78fr);
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
   gap: clamp(28px, 5vw, 72px);
-  align-items: start;
+  align-items: center;
 }
 .split__text h2 {
   font-size: clamp(26px, 3.4vw, 38px);
@@ -673,7 +719,7 @@ a { color: var(--text-bright); }
 
 
 /* The inventory column: what is in the window, once the headline claim is made. */
-.feats { border-left: var(--rule); padding-left: clamp(20px, 3vw, 34px); }
+.feats { margin-top: 26px; }
 .feats__k {
   font-family: var(--mono);
   font-size: 11.5px;
@@ -701,9 +747,14 @@ a { color: var(--text-bright); }
   background: var(--signal-deep);
 }
 
+/* Plate II's caption sits under a figure that shares its row with prose. */
+.plate--tall .plate__cap { grid-template-columns: 88px minmax(0, 1fr); }
+
 @media (max-width: 900px) {
   .split { grid-template-columns: 1fr; }
-  .feats { border-left: 0; padding-left: 0; }
+  .split__text { order: 2; }
+  .plate__cap { grid-template-columns: 1fr; gap: 6px; }
+  .plate__note { grid-column: 1; }
 }
 
 @media (max-width: 560px) {

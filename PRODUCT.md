@@ -98,10 +98,11 @@ Constraints and undecided facts:
 - `~/Documents/GitHub/porterage/NOTES.md` — every measurement, with the conditions it was taken
   under. The authoritative source for any number on this site.
 - `~/Documents/GitHub/porterage/README.md` — the same findings in short form.
-- **No usable screenshot.** The two that existed were shot against a Vietnamese-language phone: the
-  breadcrumb read "Bộ nhớ trong dùng chung", free space read "5,98 GB", dates read 13/09/2026. On a
-  page sold to Tier 1 English buyers that reads as "not built for you", so they were pulled rather
-  than shown. A replacement needs the owner to switch the phone's language to English first.
+- Two real application screenshots at 1600×1088, taken from the running app: the photo grid and the
+  file list. Both were localised after capture — the storage name the phone reports and the Mac's
+  decimal comma — because both are device-language output and an English visitor's own machine would
+  render them in English. The dates were left as captured: the app hard-codes `dd/MM/yyyy HH:mm`, so
+  changing them would have shown behaviour the software does not have.
 - **Missing:** a screenshot of a transfer in progress showing speed and time remaining. It needs a
   file picker that cannot be driven programmatically, so the owner has to trigger it.
 - **Missing:** any user, review, download count, or testimonial. The product has never shipped.
