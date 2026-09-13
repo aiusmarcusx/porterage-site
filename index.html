@@ -48,9 +48,9 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
       </div>
       <p class="caveat">
         <span class="dot dot--alarm" aria-hidden="true"></span>
-        <span>Not notarised by Apple yet, so the first launch needs a right-click → Open. One phone
-        model has been tested properly.
-        <a href="#limits">What else it does not do</a></span>
+        <span>Not notarised by Apple yet, so macOS blocks the first launch and you have to allow it
+        once in System Settings. One phone model has been tested properly.
+        <a href="#limits">How to get past that, and what else it does not do</a></span>
       </p>
     </div>
 
@@ -300,7 +300,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
       <p class="sechead__sub">Stated here because finding out later is worse.</p>
     </div>
     <ul class="limits">
-      <li><strong>Not signed by Apple yet.</strong> macOS will warn on first launch until a Developer ID certificate is in place. Right-click the app and choose Open to get past it.</li>
+      <li><strong>Not signed by Apple yet.</strong> macOS refuses the first launch until a Developer ID certificate is in place, and since Sequoia the old Control-click shortcut no longer works. Double-click Porterage once and let it be blocked, then go to <strong>System Settings → Privacy &amp; Security</strong>, scroll to Security, and click <strong>Open Anyway</strong> — the button appears there for about an hour after the attempt. It asks for your password once, and never again.</li>
       <li><strong>No Wi-Fi, no cloud, no account.</strong> A cable, and nothing installed on the phone.</li>
       <li><strong>Dates survive one direction only.</strong> Files copied to the Mac keep their original date; the phone stamps its own clock on anything copied to it, and refuses to be told otherwise.</li>
       <li><strong>Memory cards are untested.</strong> The phone used for development has no card slot in use, so that path has never been exercised.</li>

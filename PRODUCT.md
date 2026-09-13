@@ -71,9 +71,15 @@ Confirmed and measured:
 
 Constraints and undecided facts:
 
-- Not yet released; there is no GitHub repository, no tagged release, and no download to link to.
-- Not yet signed with a Developer ID or notarised, so macOS currently warns on first open. The owner
-  has no Apple Developer account yet.
+- Released 13 Sep 2026 as 0.1.0: `github.com/aiusmarcusx/porterage`, tag `v0.1.0`, a 1.2 MB
+  universal dmg attached to the release. The download button points at `/releases/latest`, which
+  GitHub resolves only to non-prerelease tags — so a release marked pre-release breaks that link.
+- Not signed with a Developer ID or notarised. Measured on the published dmg: `spctl` returns
+  *rejected*, the signature is ad-hoc with no team identifier, and no notarisation ticket is
+  stapled. macOS therefore refuses the first launch outright, and since macOS 15 Control-click no
+  longer overrides it — the user must allow the app in System Settings > Privacy & Security. Any
+  copy describing this must say that, not the old Control-click shortcut. The owner has no Apple
+  Developer account yet.
 - Dates are preserved phone → Mac only; the phone stamps its own clock on incoming files.
 - The removable-storage (SD card) path is untested — the test phone has no card.
 - A paid Pro tier is planned but its scope and price are undecided. **No pricing on this site.**
@@ -81,7 +87,8 @@ Constraints and undecided facts:
 ## Brand Commitments
 
 - Name: **Porterage**. Domain `porterage.app`, owned.
-- Open source. Repository under `github.com/aiusmarcusx/porterage` (not yet created).
+- Open source, Apache-2.0. Repository at `github.com/aiusmarcusx/porterage`. The name is explicitly
+  outside the licence grant (Apache section 6): forks are welcome, forks called Porterage are not.
 - Deliberately avoids "Android", "Droid", "Mac" and "Apple" in the product name for trademark
   reasons; the body copy may name Android and macOS factually.
 - English only. The product's own interface is English; there is no localisation.
@@ -91,8 +98,10 @@ Constraints and undecided facts:
 - `~/Documents/GitHub/porterage/NOTES.md` — every measurement, with the conditions it was taken
   under. The authoritative source for any number on this site.
 - `~/Documents/GitHub/porterage/README.md` — the same findings in short form.
-- Two real application screenshots at 1800×1224, taken from the running app: the photo grid and the
-  file list.
+- **No usable screenshot.** The two that existed were shot against a Vietnamese-language phone: the
+  breadcrumb read "Bộ nhớ trong dùng chung", free space read "5,98 GB", dates read 13/09/2026. On a
+  page sold to Tier 1 English buyers that reads as "not built for you", so they were pulled rather
+  than shown. A replacement needs the owner to switch the phone's language to English first.
 - **Missing:** a screenshot of a transfer in progress showing speed and time remaining. It needs a
   file picker that cannot be driven programmatically, so the owner has to trigger it.
 - **Missing:** any user, review, download count, or testimonial. The product has never shipped.
