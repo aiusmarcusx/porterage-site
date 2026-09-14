@@ -4,3 +4,6 @@
 # Wrangler writes the Cloudflare account id and account NAME (which is an email address)
 # into here. Never commit it.
 .wrangler/
+
+# Runtime state of the impeccable decision page.
+.impeccable/questions/
