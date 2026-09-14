@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Transfer Photos and Files from Android to Mac</title>
+<meta name="description" content="Five things decide whether an Android phone works with a Mac: cable, USB mode, lock screen, app, and the copy itself. Each step, with what was measured.">
+<meta name="theme-color" content="#17181A">
+<link rel="canonical" href="https://porterage.app/android-to-mac/">
+<meta property="og:title" content="How to transfer photos and files from Android to a Mac">
+<meta property="og:description" content="Cable, USB mode, lock screen, app, copy: the five stages in the order your hands meet them, with what fails at each one and what was measured.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://porterage.app/android-to-mac/">
+<meta property="og:site_name" content="Porterage">
+<meta property="og:image" content="https://porterage.app/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://porterage.app/assets/og.png">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Azeret+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "How to transfer photos and files from Android to a Mac",
+      "description": "The five stages of connecting an Android phone to a Mac over a cable, with what fails at each one and what was measured on real hardware.",
+      "datePublished": "2026-09-14",
+      "dateModified": "2026-09-14",
+      "inLanguage": "en",
+      "mainEntityOfPage": "https://porterage.app/android-to-mac/",
+      "image": "https://porterage.app/assets/og.png",
+      "author": { "@type": "Organization", "name": "Porterage", "url": "https://porterage.app/" },
+      "publisher": { "@type": "Organization", "name": "Porterage", "url": "https://porterage.app/" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Porterage", "item": "https://porterage.app/" },
+        { "@type": "ListItem", "position": 2, "name": "Android to Mac", "item": "https://porterage.app/android-to-mac/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<!--
+THESIS: The guide is the connection itself, laid out in the order hands make it (cable, USB mode, unlock, method, copy), each stage carrying what fails there and what was measured. Refuses the vendor "8 tips to fix it" list that ends in a buy button.
+OWN-WORLD: Inherited Porterage faceplate: graphite panels, Archivo over Azeret Mono readings, amber lamps for the live stage, alarm red for named faults, registered plates, recessed readouts on one shared scale.
+STORY: The reader arrives with a phone plugged in and nothing working, finds their stage, reads the measured cause, fixes it, and sees where an MTP app fits and where the free built-in tool is enough.
+FIRST VIEWPORT: Left, the question as H1 over a three-sentence answer and the measurement line; right, a five-stage amber signal path whose stages jump to their sections; Download in the top bar.
+FORM: Signal path, candidate 1 of the grounded structure list, seed key 04b78340.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
+-->
+
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="rail" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="wrap topbar__in">
+    <a class="topbar__brand" href="/">Porterage</a>
+    <a class="plate-btn plate-btn--sm" href="https://github.com/aiusmarcusx/porterage/releases/latest">
+      <span class="plate-btn__lamp" aria-hidden="true"></span>
+      <span class="plate-btn__text">Download for macOS</span>
+    </a>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="panel panel--guidehead">
+  <div class="wrap guidehead">
+    <div class="guidehead__text">
+      <h1 class="guide-title">How to transfer photos and files from Android to a Mac</h1>
+      <p class="guide-lede">
+        Over a cable it comes down to five things, in the order your hands meet them: a cable that
+        carries data, the phone's USB mode, the lock screen, the app on the Mac, and the copy itself.
+        Get the first three right and the Mac can see the phone. The fourth decides what you can copy.
+      </p>
+      <p class="guide-meta">Measured on a Redmi 9T (Android 11) and a MacBook Air M1 (macOS 26.5.1) · Updated 14 September 2026</p>
+    </div>
+
+    <nav class="path" aria-label="The five stages">
+      <ol>
+        <li><a href="#cable"><span class="path__no">1</span><span class="path__name">Cable</span><span class="path__note">Some cables only charge</span></a></li>
+        <li><a href="#usb-mode"><span class="path__no">2</span><span class="path__name">USB mode</span><span class="path__note">Charging only hides the phone</span></a></li>
+        <li><a href="#unlock"><span class="path__no">3</span><span class="path__name">Unlock</span><span class="path__note">A locked phone refuses a new connection</span></a></li>
+        <li><a href="#method"><span class="path__no">4</span><span class="path__name">Method</span><span class="path__note">The built-in tool sees photos only</span></a></li>
+        <li><a href="#copy"><span class="path__no">5</span><span class="path__name">Copy</span><span class="path__note">Hundreds of small files can stall it</span></a></li>
+      </ol>
+    </nav>
+  </div>
+</section>
+
+<div class="panel panel--guide">
+  <div class="wrap guide">
+
+    <nav class="stagerail" aria-label="Stages on this page">
+      <ol>
+        <li><a href="#cable"><span class="stagerail__lamp" aria-hidden="true"></span><span class="stagerail__no">1</span>Cable</a></li>
+        <li><a href="#usb-mode"><span class="stagerail__lamp" aria-hidden="true"></span><span class="stagerail__no">2</span>USB mode</a></li>
+        <li><a href="#unlock"><span class="stagerail__lamp" aria-hidden="true"></span><span class="stagerail__no">3</span>Unlock</a></li>
+        <li><a href="#method"><span class="stagerail__lamp" aria-hidden="true"></span><span class="stagerail__no">4</span>Method</a></li>
+        <li><a href="#copy"><span class="stagerail__lamp" aria-hidden="true"></span><span class="stagerail__no">5</span>Copy</a></li>
+        <li class="stagerail__fix"><a href="#fix"><span class="stagerail__lamp" aria-hidden="true"></span>Still not working</a></li>
+      </ol>
+    </nav>
+
+    <div class="guide__body">
+
+      <section class="stage" id="cable" aria-labelledby="cable-h">
+        <h2 class="stage__h" id="cable-h"><span class="stage__no" aria-hidden="true">1</span>Use a cable that carries data</h2>
+        <p>
+          Plenty of USB cables only charge. With one of those the phone fills its battery and the Mac
+          never learns a phone is there, so nothing in the later stages can change the outcome. If the
+          phone never offers you a choice of what to use USB for, try another cable before anything
+          else, and plug straight into the Mac rather than through a hub.
+        </p>
+        <aside class="measured">
+          <p class="measured__k">Measured</p>
+          <p>
+            Copying onto the phone topped out at 15–16 MiB/s while copying off it ran at 29. The limit on
+            the way in is the phone's own flash storage, not the cable, so a better cable will not speed
+            up that direction.
+          </p>
+        </aside>
+      </section>
+
+      <section class="stage" id="usb-mode" aria-labelledby="usb-mode-h">
+        <h2 class="stage__h" id="usb-mode-h"><span class="stage__no" aria-hidden="true">2</span>Switch the phone to file transfer</h2>
+        <p>
+          Most phones start a USB connection charging only. Pull down the notification shade, tap the
+          USB notification, and choose the file transfer option. Phones name it differently — File
+          transfer, Transferring files, or MTP. It is not the same as Transfer photos, which is also
+          called PTP, and the difference decides what the Mac can see.
+        </p>
+        <div class="tablewrap">
+          <table class="gtable gtable--stack">
+            <thead>
+              <tr><th scope="col">On the phone</th><th scope="col">What the Mac sees</th><th scope="col">Works with</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Charging only, or No data transfer</th><td data-label="The Mac sees">Nothing at all</td><td data-label="Works with">Nothing</td></tr>
+              <tr><th scope="row">Transfer photos (PTP)</th><td data-label="The Mac sees">A camera, holding your photo and video folders</td><td data-label="Works with">Image Capture</td></tr>
+              <tr><th scope="row">File transfer (MTP)</th><td data-label="The Mac sees">The phone's whole shared storage</td><td data-label="Works with">An MTP app, stage 4</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <aside class="measured">
+          <p class="measured__k">Measured</p>
+          <p>
+            The two data modes identify themselves to the Mac as different kinds of device: Transfer
+            photos as a camera, File transfer as an MTP device. An app looking for one never finds the
+            other. And after every replug, the Redmi 9T went back to charging only and asked again.
+          </p>
+        </aside>
+        <p>
+          To stop choosing every time, many phones have a Default USB configuration setting under
+          Developer options. Set it to file transfer.
+        </p>
+      </section>
+
+      <section class="stage" id="unlock" aria-labelledby="unlock-h">
+        <h2 class="stage__h" id="unlock-h"><span class="stage__no" aria-hidden="true">3</span>Unlock the phone, then start</h2>
+        <p>
+          A locked phone will not let a computer open a new connection to its storage. The Mac can tell
+          a phone is plugged in, but the list of storage comes back empty — which most tools report as
+          nothing more specific than "not connected".
+        </p>
+        <p>The lock only matters at the start. Once a copy is running you can lock the phone and put it down.</p>
+        <aside class="measured">
+          <p class="measured__k">Measured</p>
+          <p>
+            With a copy already running, the screen was locked and left locked: eleven consecutive
+            512 MiB reads finished at 29.1–29.5 MiB/s with no errors. A <em>new</em> connection tried on
+            the same locked phone at that moment failed.
+          </p>
+        </aside>
+      </section>
+
+      <section class="stage" id="method" aria-labelledby="method-h">
+        <h2 class="stage__h" id="method-h"><span class="stage__no" aria-hidden="true">4</span>Choose how to copy</h2>
+        <p>
+          What you want to move decides the tool. macOS has one built in that handles photos. For
+          anything else you need an app that speaks MTP, the protocol Android uses for file transfer.
+        </p>
+        <div class="tablewrap">
+          <table class="gtable gtable--compare">
+            <thead>
+              <tr><th scope="col"><span class="sr-only">Capability</span></th><th scope="col">Image Capture</th><th scope="col">An MTP app</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Photos and videos</th><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+              <tr><th scope="row">Other folders — Download, Documents, app files</th><td class="no">No</td><td class="yes">Yes</td></tr>
+              <tr><th scope="row">Copy from the Mac to the phone</th><td class="no">No</td><td class="yes">Yes</td></tr>
+              <tr><th scope="row">Phone's USB mode</th><td>Transfer photos (PTP)</td><td>File transfer (MTP)</td></tr>
+              <tr><th scope="row">Cost</th><td>Built into macOS</td><td>Free or paid, below</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 class="guide-h3">Photos only: Image Capture</h3>
+        <ol class="steps">
+          <li>Set the phone to Transfer photos, as in stage 2.</li>
+          <li>Open Image Capture. It is in the Applications folder, or search for it with Spotlight.</li>
+          <li>Select the phone under Devices in the sidebar.</li>
+          <li>Choose a folder in Import To, then select photos and click Import — or click Import All.</li>
+        </ol>
+        <p>When all you need is the camera roll, this is the quickest route, and there is nothing to install.</p>
+
+        <h3 class="guide-h3">Android File Transfer</h3>
+        <p>
+          Google's own Mac app was the usual answer for years. In February 2024 Google took it off
+          android.com (<a href="https://9to5google.com/2024/02/16/android-file-transfer-mac-hidden/">9to5Google</a>),
+          and copies now circulate on third-party download sites instead.
+        </p>
+
+        <h3 class="guide-h3">Everything else: an MTP app</h3>
+        <p>These talk to the phone in File transfer mode and show its storage as folders you can browse, copy out of, and copy into.</p>
+        <ul class="apps">
+          <li><strong>Porterage</strong> — free and open source, macOS 14 or later. It is the app this site is for, and the source of every measurement on this page.</li>
+          <li><strong>OpenMTP</strong> — free and open source.</li>
+          <li><strong>MacDroid</strong> — its free tier copies from the phone to the Mac; copying back to the phone is paid.</li>
+        </ul>
+
+        <p>To copy with Porterage:</p>
+        <ol class="steps">
+          <li>Download Porterage from GitHub and drag it into Applications.</li>
+          <li>Open it once. It is not signed by Apple yet, so macOS blocks it; go to System Settings → Privacy &amp; Security and click Open Anyway.</li>
+          <li>Plug the phone in, unlocked and set to File transfer.</li>
+          <li>Browse the phone as a list or as a grid of thumbnails. Drag files out to the Finder, or drop files onto a folder to copy them to the phone.</li>
+        </ol>
+
+        <figure class="plate">
+          <div class="plate__frame">
+            <img src="/assets/grid.webp" width="1600" height="1088" alt="Porterage showing a folder of photos on an Android phone as a grid of thumbnails, with a breadcrumb, search field and a free-space readout." loading="lazy" decoding="async">
+            <span class="reg reg--tl" aria-hidden="true"></span><span class="reg reg--tr" aria-hidden="true"></span>
+            <span class="reg reg--bl" aria-hidden="true"></span><span class="reg reg--br" aria-hidden="true"></span>
+          </div>
+          <figcaption class="plate__cap">
+            <span class="plate__id">Plate I</span>
+            <span class="plate__desc">Porterage in File transfer mode, showing a phone folder as thumbnails.</span>
+            <span class="plate__note">Placeholder images, staged on the phone so the owner's own library stayed out of it. Two strings were set to English — the storage name the phone reports, and the decimal separator — both of which follow the device's own language. Every figure is as captured.</span>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="stage" id="copy" aria-labelledby="copy-h">
+        <h2 class="stage__h" id="copy-h"><span class="stage__no" aria-hidden="true">5</span>Copy, and know what to expect</h2>
+        <p>A few things about copying look like faults the first time you meet them. Only the third one is.</p>
+
+        <h3 class="guide-h3">The first folder is slow</h3>
+        <p>
+          Right after you plug in, the phone builds an index of everything on its storage before it
+          answers. Let it finish; unplugging starts it over.
+        </p>
+        <div class="readout">
+          <div class="readout__row"><span class="readout__k">First listing</span><span class="bar"><i data-w="100"></i></span><span class="readout__v">17 s<em>after plugging in</em></span></div>
+          <div class="readout__row"><span class="readout__k">After that</span><span class="bar"><i data-w="1"></i></span><span class="readout__v">0.17 s<em>same folder</em></span></div>
+          <p class="readout__note">Both bars share one scale. The test phone held about 34,000 files and folders.</p>
+        </div>
+
+        <h3 class="guide-h3">Copying onto the phone is half the speed</h3>
+        <div class="readout">
+          <div class="readout__row"><span class="readout__k">Phone → Mac</span><span class="bar"><i data-w="73.5"></i></span><span class="readout__v">29 MiB/s<em>large file</em></span></div>
+          <div class="readout__row"><span class="readout__k">Mac → phone</span><span class="bar"><i data-w="38.8"></i></span><span class="readout__v">15–16 MiB/s<em>large file</em></span></div>
+          <p class="readout__note">Scale 0–40 MiB/s. 324 real photos, 2 GiB in all, came off in 79 seconds — about four minutes for a thousand.</p>
+        </div>
+
+        <h3 class="guide-h3">Hundreds of small files can stall the connection</h3>
+        <p>
+          The phone raises a notice for every file written to it. A tool that never reads those notices
+          slows down as they pile up, and at roughly 211 files the phone stops answering altogether. A
+          software reset does not bring it back; only unplugging the cable does. Porterage reads the
+          notices as it goes.
+        </p>
+        <div class="readout">
+          <div class="readout__row"><span class="readout__k">Notices read</span><span class="bar"><i data-w="4.8"></i></span><span class="readout__v">53 ms<em>per file</em></span></div>
+          <div class="readout__row readout__row--bad"><span class="readout__k">Not read</span><span class="bar"><i data-w="100"></i></span><span class="readout__v">1 100 ms<em>per file</em></span></div>
+          <p class="readout__note">Same phone, same 400 small files. Unread, it stopped answering for good at about 211.</p>
+        </div>
+
+        <h3 class="guide-h3">Three more things worth knowing</h3>
+        <ul class="facts">
+          <li><strong>Dates survive one way.</strong> Files copied to the Mac can keep their original date. Files copied onto the phone get the phone's current time, and it refuses to be told otherwise.</li>
+          <li><strong>Names that differ only in capitals collide.</strong> The phone's storage treats <code>Report.txt</code> and <code>report.txt</code> as one file, so copying the second silently replaces the first.</li>
+          <li><strong>The phone accepts files that will not fit.</strong> Offered a file far larger than its free space, it starts taking the data anyway. Its free-space figure is exact, so check it before a big copy.</li>
+        </ul>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<section class="panel panel--fix" id="fix" aria-labelledby="fix-h">
+  <div class="wrap">
+    <div class="sechead">
+      <h2 id="fix-h">Still not working</h2>
+      <p class="sechead__sub">Find what you are seeing, then go back to the stage it points at.</p>
+    </div>
+    <div class="tablewrap">
+      <table class="gtable gtable--fix gtable--stack">
+        <thead>
+          <tr><th scope="col">What you see</th><th scope="col">What it usually means</th><th scope="col">Go to</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="dot dot--alarm" aria-hidden="true"></span>The phone charges and the Mac shows nothing</td><td data-label="Usually means">Charging-only mode, or a cable that only charges</td><td data-label="Go to"><a href="#usb-mode">2 · USB mode</a><a href="#cable">1 · Cable</a></td></tr>
+          <tr><td><span class="dot dot--alarm" aria-hidden="true"></span>Image Capture sees photos, but an app finds no phone</td><td data-label="Usually means">The phone is set to Transfer photos (PTP)</td><td data-label="Go to"><a href="#usb-mode">2 · USB mode</a></td></tr>
+          <tr><td><span class="dot dot--alarm" aria-hidden="true"></span>The phone is detected, but its storage is empty or "not connected"</td><td data-label="Usually means">The screen is locked</td><td data-label="Go to"><a href="#unlock">3 · Unlock</a></td></tr>
+          <tr><td><span class="dot dot--alarm" aria-hidden="true"></span>An app says the phone is busy or in use</td><td data-label="Usually means">Another app on the Mac already holds it — quit OpenMTP or Android File Transfer</td><td data-label="Go to"><a href="#method">4 · Method</a></td></tr>
+          <tr><td><span class="dot dot--alarm" aria-hidden="true"></span>It worked, then stopped answering during a batch of small files</td><td data-label="Usually means">The connection has stalled. Unplug and replug the cable</td><td data-label="Go to"><a href="#copy">5 · Copy</a></td></tr>
+          <tr><td><span class="dot dot--ok" aria-hidden="true"></span>The first folder takes around 17 seconds to open</td><td data-label="Usually means">Normal: the phone is indexing its storage</td><td data-label="Go to"><a href="#copy">5 · Copy</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="panel panel--guideclose" aria-labelledby="close-h">
+  <div class="wrap guideclose">
+    <div class="guideclose__text">
+      <h2 id="close-h">An app that tells you which stage is wrong</h2>
+      <p>
+        Porterage tells a locked screen apart from the wrong USB mode, reads the phone's notices so big
+        batches keep moving, and resumes an interrupted copy at the exact byte. Free and open source.
+      </p>
+    </div>
+    <div class="guideclose__actions">
+      <a class="plate-btn" href="https://github.com/aiusmarcusx/porterage/releases/latest">
+        <span class="plate-btn__lamp" aria-hidden="true"></span>
+        <span class="plate-btn__text">Download for macOS</span>
+      </a>
+      <a class="ghost-btn" href="/#bench">How it was measured</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="panel panel--foot">
+  <div class="wrap foot">
+    <div class="foot__left">
+      <a class="brand brand--sm foot__home" href="/">Porterage</a>
+      <p class="model">Open source · built on libusb · no telemetry</p>
+    </div>
+    <div class="foot__right">
+      <a class="plate-btn plate-btn--sm" href="https://github.com/aiusmarcusx/porterage/releases/latest">
+        <span class="plate-btn__lamp" aria-hidden="true"></span>
+        <span class="plate-btn__text">Download for macOS</span>
+      </a>
+      <a class="ghost-btn" href="https://github.com/aiusmarcusx/porterage">Source &amp; measurements</a>
+    </div>
+  </div>
+</footer>
+<script src="/assets/guide.js" defer></script>
+</body>
+</html>

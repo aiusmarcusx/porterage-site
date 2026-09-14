@@ -487,6 +487,33 @@ the second column. Below 900px the caption stacks to one column and the note joi
 led by an 11px `signal-deep` tick. It answers "and what else" after the prose has made one claim, and
 it carries no numbers — anything measurable belongs in a readout, not here.
 
+### Guide pages (`/android-to-mac/`)
+A Read surface inside the same world. Prose runs at 68ch in `--text` (brighter than the homepage's
+`--label` card copy, because it is read for minutes, not scanned); every measurement still arrives
+inside a recessed housing, so reading and reading-off stay visibly different acts.
+
+- **Top bar.** A `panel-low` strip with the brand as a link at 22px and the small Download plate. The
+  homepage has no bar because its wordmark is the hero; a guide needs a way home.
+- **Signal path.** The hero's table of contents, drawn as the connection: five tap points on one
+  vertical hairline inside a gauge-style recess, each a link carrying a mono stage number, an 18px
+  name and one line of what fails there. The lamps start at `signal-ghost` and come up in order once
+  on load (150ms apart), then hold — the ladder's ignite-and-hold, not a reveal. Content is visible
+  before the lamps light.
+- **Stage rail.** At 1100px and up, a 170px sticky column of mono stage names beside the body. The
+  lamp of the stage crossing a band at 35–45% of the viewport turns amber via `aria-current="step"`.
+  Below 1100px it is hidden; the signal path above is the table of contents.
+- **Stage heading.** The stage number sits inside the `h2`, in mono at half the heading size, amber.
+  It is sequence — the order hands meet the hardware — which is the only reason a number may lead a
+  heading.
+- **Measured callout.** A recessed box headed by a lit lamp and the word MEASURED. Only text that
+  comes from NOTES.md goes in one; general instructions are never dressed as measurement.
+- **Guide tables.** `panel-low` body, recessed mono header row, row headers in `text-bright`.
+  Capability cells read Yes in `--ok` and No in `label-dim`, both mono. Below 640px a table whose last
+  column is the answer stacks: each row becomes a block and every value cell prints its column name
+  from `data-label`, so the answer is never behind a sideways scroll.
+- **Steps.** An ordered procedure as hairline rows, each numbered by a 26px recessed key in mono amber.
+  Two procedures on one page each get a lead-in line saying whose steps they are.
+
 ### Named Rules
 **The Ignite-Don't-Slide Rule.** Motion in this system is state change on instruments; panels,
 sections and images never move, fade in, or parallax. The ladder is the only animation: on first
@@ -494,6 +521,11 @@ intersection at 0.4 threshold it lights one cell at a time at 34ms, slowing to 9
 four so it reads as a needle settling, then unobserves itself and holds. `prefers-reduced-motion`
 lights the same cells instantly, and the global reduced-motion rule collapses every transition to
 0.001ms. Anything new either changes state in place or does not move.
+
+**The Shared Track Rule.** Bars inside one readout must have identical track lengths. An `auto`
+value column lets a longer caption shorten its own bar, which silently breaks "both bars share one
+scale" — found in review on the guide and fixed with a fixed 132px value column above 560px. Any
+readout whose captions differ in length gets a fixed value column.
 
 **The Conditions-Attached Rule.** A measurement never appears alone. Every instrument carries, inside
 its own borders, what was measured against what — the gauge's full-scale and opposite direction, the
@@ -521,6 +553,9 @@ figure without its conditions is not finished.
   a decimal comma in the free-space readout, tells a Tier 1 visitor the tool was not built for them.
 - **Do** rely on the single global `:focus-visible` ring (2px `--signal`, 3px offset) rather than
   per-component focus styling.
+
+- **Do** stack a table on phones when its final column is the answer; a sideways scroll hides exactly the
+  part the reader came for.
 
 ### Don't:
 - **Don't** introduce a third typeface, an icon font, or a glyph/emoji used as UI. Lamps, ticks and

@@ -788,3 +788,347 @@ input, textarea { caret-color: var(--signal); }
   .nf p { margin: 20px 0 0; color: var(--label); font-size: 17px; line-height: 1.6; max-width: 54ch; }
   .nf .ladder { margin: 40px 0 0; max-width: 420px; }
   .nf__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
+
+
+/* Guide pages --------------------------------------------------------------
+   A guide is read, not scanned: prose runs at 68ch in the brighter text tone, and every
+   measurement still arrives inside a recessed housing so reading and reading-off stay distinct.
+   Stage numbers are sequence, not decoration — the order is the order hands meet the hardware. */
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+.bar i[data-w="1"] { --w: 1%; }
+.bar i[data-w="38.8"] { --w: 38.8%; }
+.bar i[data-w="73.5"] { --w: 73.5%; }
+
+.topbar { position: relative; z-index: 2; background: var(--panel-low); border-bottom: var(--rule); }
+.topbar__in { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-block: 12px; }
+.topbar__brand {
+  font-size: 22px; font-weight: 700; letter-spacing: -0.02em;
+  color: var(--text-bright); text-decoration: none;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.8), 0 -1px 0 rgba(255, 255, 255, 0.07);
+}
+.topbar__brand:hover { color: var(--signal); }
+
+.panel--guidehead { padding-block: clamp(40px, 6vw, 76px); }
+.guidehead {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+}
+.guide-title {
+  font-size: clamp(34px, 5vw, 58px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.04;
+  margin: 0;
+  color: var(--text-bright);
+  text-wrap: balance;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.8), 0 -1px 0 rgba(255, 255, 255, 0.07);
+}
+.guide-lede { max-width: 58ch; margin: 24px 0 0; font-size: clamp(17.5px, 1.8vw, 20px); line-height: 1.6; color: var(--text); }
+.guide-meta { margin: 22px 0 0; font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; line-height: 1.7; color: var(--label-dim); }
+
+/* The signal path: five tap points on one line. The lamps come up in order on load — the
+   connection being made — and then hold, the same ignite-and-hold the gauge ladder uses. */
+.path {
+  background: linear-gradient(180deg, var(--recess), #0e0f11);
+  border: 1px solid var(--edge-soft);
+  border-radius: 3px;
+  padding: 12px 10px 12px 22px;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.75);
+}
+.path ol { list-style: none; margin: 0; padding: 0; position: relative; }
+.path ol::before {
+  content: "";
+  position: absolute;
+  left: 4px; top: 26px; bottom: 26px; width: 1px;
+  background: linear-gradient(180deg, var(--signal-deep), var(--edge) 85%);
+}
+.path a {
+  position: relative;
+  display: block;
+  padding: 12px 14px 12px 30px;
+  border-radius: 2px;
+  text-decoration: none;
+  transition: background-color 0.15s ease-out;
+}
+.path a::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 21px;
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--signal-ghost);
+  transition: background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.path li.is-lit a::before { background: var(--signal); box-shadow: 0 0 10px rgba(255, 165, 31, 0.5); }
+.path a:hover { background: var(--panel-high); }
+.path a:hover .path__name { color: var(--signal); }
+.path__no { font-family: var(--mono); font-size: 12px; color: var(--signal); margin-right: 12px; font-variant-numeric: tabular-nums; }
+.path__name { font-size: 18px; font-weight: 600; letter-spacing: -0.01em; color: var(--text-bright); transition: color 0.15s ease-out; }
+.path__note { display: block; margin-top: 3px; font-size: 14.5px; line-height: 1.45; color: var(--label); }
+
+.guide__body { min-width: 0; }
+
+/* Wide screens get a sticky rail whose lamp follows the stage being read. Narrow screens
+   already have the signal path above as their table of contents. */
+.stagerail { display: none; }
+.stagerail ol { list-style: none; margin: 0; padding: 0; }
+.stagerail a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--label-dim);
+  text-decoration: none;
+}
+.stagerail__no { min-width: 1ch; color: var(--label-dim); }
+.stagerail__lamp {
+  flex: none;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--edge);
+  transition: background-color 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+.stagerail a:hover { color: var(--text-bright); }
+.stagerail a[aria-current="step"] { color: var(--text-bright); }
+.stagerail a[aria-current="step"] .stagerail__no { color: var(--signal); }
+.stagerail a[aria-current="step"] .stagerail__lamp { background: var(--signal); box-shadow: 0 0 9px rgba(255, 165, 31, 0.55); }
+.stagerail .stagerail__fix { margin-top: 12px; padding-top: 12px; border-top: var(--rule); }
+.stagerail .stagerail__fix a[aria-current="step"] .stagerail__lamp { background: var(--alarm); box-shadow: 0 0 9px rgba(228, 84, 74, 0.55); }
+
+@media (min-width: 1100px) {
+  .guide { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 56px; }
+  .stagerail { display: block; }
+  .stagerail ol { position: sticky; top: 28px; }
+}
+
+.stage { padding-block: clamp(38px, 5vw, 62px); border-top: var(--rule); scroll-margin-top: 20px; }
+.stage:first-child { border-top: 0; padding-top: 0; }
+.stage .stage__h {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  font-size: clamp(25px, 3vw, 34px);
+  font-weight: 600;
+  letter-spacing: -0.022em;
+  line-height: 1.15;
+  margin: 0 0 20px;
+  color: var(--text-bright);
+  text-wrap: balance;
+}
+.stage .stage__no {
+  flex: none;
+  font-family: var(--mono);
+  font-size: 0.5em;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--signal);
+  transform: translateY(-0.2em);
+}
+.stage > p { max-width: 68ch; margin: 0 0 18px; font-size: 17px; line-height: 1.68; color: var(--text); }
+.stage > p a { color: var(--text-bright); text-underline-offset: 3px; text-decoration-color: var(--signal-deep); }
+.stage > p a:hover { color: var(--signal); }
+.stage .guide-h3 {
+  font-size: clamp(19px, 2.1vw, 22px);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  margin: 38px 0 12px;
+  color: var(--text-bright);
+  text-wrap: balance;
+}
+.stage .readout { max-width: 640px; margin: 18px 0 8px; }
+/* A fixed value column, so the two bars in a readout get the same track length. With an auto
+   column a longer caption shortened its own bar, and "both bars share one scale" stopped being true. */
+@media (min-width: 561px) {
+  .stage .readout__row { grid-template-columns: 116px minmax(0, 1fr) 132px; }
+}
+.stage .plate { margin: 32px 0 6px; }
+
+.measured {
+  max-width: 68ch;
+  margin: 22px 0;
+  padding: 16px 20px;
+  background: var(--recess);
+  border: 1px solid var(--edge-soft);
+  border-radius: 3px;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+.measured .measured__k {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0 0 8px;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--signal);
+}
+.measured .measured__k::before {
+  content: "";
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--signal);
+  box-shadow: 0 0 8px rgba(255, 165, 31, 0.5);
+}
+.measured p { margin: 0; font-size: 15.5px; line-height: 1.6; color: var(--label); }
+
+.tablewrap {
+  overflow-x: auto;
+  max-width: 760px;
+  margin: 22px 0 26px;
+  background: var(--panel-low);
+  border: 1px solid var(--edge-soft);
+  border-radius: 3px;
+}
+.gtable { width: 100%; min-width: 520px; border-collapse: collapse; font-size: 15px; line-height: 1.45; }
+.gtable th, .gtable td { padding: 13px 16px; text-align: left; vertical-align: top; border-top: var(--rule); }
+.gtable thead th {
+  border-top: 0;
+  background: var(--recess);
+  font-family: var(--mono);
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--label-dim);
+}
+.gtable tbody th { font-weight: 600; color: var(--text-bright); }
+.gtable td { color: var(--label); }
+.gtable .yes { font-family: var(--mono); font-size: 13px; letter-spacing: 0.06em; color: var(--ok); }
+.gtable .no { font-family: var(--mono); font-size: 13px; letter-spacing: 0.06em; color: var(--label-dim); }
+
+.steps { list-style: none; counter-reset: step; max-width: 68ch; margin: 16px 0 22px; padding: 0; }
+.steps li {
+  counter-increment: step;
+  position: relative;
+  padding: 12px 0 12px 44px;
+  border-top: var(--rule);
+  font-size: 16.5px;
+  line-height: 1.6;
+  color: var(--text);
+}
+.steps li:last-child { border-bottom: var(--rule); }
+.steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0; top: 12px;
+  width: 26px; height: 26px;
+  display: grid;
+  place-items: center;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--signal);
+  background: var(--recess);
+  border: 1px solid var(--edge);
+  border-radius: 2px;
+}
+
+.apps, .facts { list-style: none; max-width: 68ch; margin: 14px 0 22px; padding: 0; }
+.apps li, .facts li {
+  position: relative;
+  padding: 12px 0 12px 26px;
+  border-top: var(--rule);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--label);
+}
+.apps li::before, .facts li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 24px;
+  width: 12px; height: 1px;
+  background: var(--signal);
+}
+.apps strong, .facts strong { font-weight: 600; color: var(--text-bright); }
+.facts code {
+  font-family: var(--mono);
+  font-size: 0.88em;
+  color: var(--text);
+  background: var(--recess);
+  padding: 1px 5px;
+  border-radius: 2px;
+}
+
+.panel--fix { background: var(--panel-low); scroll-margin-top: 0; }
+.panel--fix .tablewrap { max-width: none; background: var(--panel); }
+.gtable--fix { min-width: 640px; }
+.gtable--fix td:first-child { color: var(--text-bright); }
+.gtable--fix td:first-child .dot { margin-right: 10px; }
+.gtable--fix td:last-child { white-space: nowrap; }
+.gtable--fix td:last-child a {
+  display: block;
+  padding: 2px 0;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  color: var(--signal);
+  text-decoration: none;
+}
+.gtable--fix td:last-child a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+.guideclose { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px; align-items: center; }
+.guideclose h2 {
+  font-size: clamp(26px, 3.4vw, 38px);
+  font-weight: 600;
+  letter-spacing: -0.024em;
+  line-height: 1.12;
+  margin: 0;
+  color: var(--text-bright);
+  text-wrap: balance;
+}
+.guideclose__text p { max-width: 60ch; margin: 14px 0 0; font-size: 16.5px; line-height: 1.6; color: var(--label); }
+.guideclose__actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+.foot__home { display: inline-block; text-decoration: none; }
+.foot__guide { margin: 14px 0 0; font-size: 14.5px; }
+.foot__guide a { color: var(--label); text-underline-offset: 3px; text-decoration-color: var(--edge); }
+.foot__guide a:hover { color: var(--signal); text-decoration-color: var(--signal-deep); }
+.foot__home:hover { color: var(--signal); }
+
+@media (max-width: 900px) {
+  .guidehead { grid-template-columns: 1fr; }
+  .guideclose { grid-template-columns: 1fr; }
+}
+
+/* On a phone a table that scrolls sideways hides its answer column. The comparison table is short
+   enough to wrap in place; the other two stack, each row becoming a block that names its own columns. */
+@media (max-width: 640px) {
+  .gtable--compare { min-width: 0; }
+  .gtable--stack { min-width: 0; }
+  .gtable--stack thead { display: none; }
+  .gtable--stack, .gtable--stack tbody, .gtable--stack tr, .gtable--stack th, .gtable--stack td { display: block; }
+  .gtable--stack tr { padding: 14px 16px; border-top: var(--rule); }
+  .gtable--stack tbody tr:first-child { border-top: 0; }
+  .gtable--stack th, .gtable--stack td { padding: 0; border-top: 0; }
+  .gtable--stack td[data-label] { margin-top: 8px; }
+  .gtable--stack td[data-label]::before {
+    content: attr(data-label);
+    display: block;
+    margin-bottom: 2px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--label-dim);
+  }
+  .gtable--fix td:last-child { white-space: normal; }
+  .gtable--fix td:last-child a { display: inline-block; margin-right: 14px; }
+}
+
+@media (max-width: 560px) {
+  .stage .stage__h { gap: 12px; }
+  .steps li { padding-left: 40px; font-size: 16px; }
+  .gtable { font-size: 14px; }
+  .guideclose__actions { flex-direction: column; align-items: stretch; }
+}
