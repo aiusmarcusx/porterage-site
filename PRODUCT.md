@@ -53,17 +53,25 @@ continue one.
 
 ## Capabilities and Constraints
 
-Confirmed and measured:
+Confirmed and measured. **Most figures below came from the libmtp prototype of 11–12 Sep, not the
+engine that ships** (which talks to libusb directly). Only the listing times (0.56 s, 17 s first)
+and a 3 MB round trip were measured on the shipping engine; the rest are being re-measured, and copy
+must not present a prototype figure as the app's own once a shipping-engine figure exists.
 
-- Two-way copying, whole folders, drag in from the Finder and drag out to it.
+- Two-way copying of files. Whole folders copy to the Mac only; a folder dropped onto the window is
+  not copied to the phone. Drag in from the Finder, and drag out to it (the drag-out is untested).
 - Photo grid with thumbnails: 14 ms each from the phone; files with no embedded thumbnail are
   fetched and scaled on the Mac.
 - Folder listing 0.56 s for 345 files, against 3.2 s the conventional way.
 - Small files copy at 53 ms each and keep doing so; without draining the phone's event queue they
   decay to ~1.1 s and MTP wedges permanently after roughly 211 files.
-- Interrupted copies resume byte-exact in both directions, verified with SHA-256.
+- A copy to the Mac is written as `<name>.part` until complete; copying the same file into the same
+  folder again continues from those bytes. The protocol can also resume uploads (measured byte-exact
+  both ways on the prototype), but the app does not: an upload that fails is deleted. Never claim
+  resuming in both directions.
 - Locking the phone's screen does not interrupt a running copy; it does block starting one.
-- Names differing only in case are refused, because the phone's storage would silently overwrite.
+- A name matching a file already on the phone, ignoring case, stops the upload and asks (Keep Both,
+  Replace, Skip), because the phone's storage would silently overwrite. Rename and New Folder refuse.
 - Speeds: about 29 MB/s off the phone, 15 MB/s onto it. 324 real photos (2 GB) in 79 seconds.
 - Free space is checked before a copy starts, because the phone accepts files that will not fit.
 - macOS 14 or later, universal (Apple silicon and Intel), 2.8 MB, no installed dependencies.

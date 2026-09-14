@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Porterage — Android file transfer for Mac, over the cable</title>
-<meta name="description" content="A free, open-source Mac app for Android file transfer over USB. Folder listings in 0.56s, 29 MiB/s off the phone, interrupted copies that resume byte-exact. Every number here was measured.">
+<meta name="description" content="A free, open-source Mac app for Android file transfer over USB. Folder listings in 0.56s, 29 MiB/s off the phone, and name clashes caught before they overwrite. Every number here was measured.">
 <meta name="theme-color" content="#17181A">
 <link rel="canonical" href="https://porterage.app/">
 <meta property="og:title" content="Porterage — Android to Mac, over the cable">
-<meta property="og:description" content="Folder listings in 0.56s instead of 3.2s. Small files that stay fast instead of wedging after 211. Interrupted copies that resume byte-exact.">
+<meta property="og:description" content="Folder listings in 0.56s instead of 3.2s. Small files that stay fast instead of wedging after 211. Name clashes caught before they overwrite.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://porterage.app/">
 <meta property="og:site_name" content="Porterage">
@@ -18,7 +18,7 @@
 <meta property="og:image:alt" content="Porterage — Android to macOS over the cable. A segment meter reading 29 MiB/s off the phone.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Porterage — Android to Mac, over the cable">
-<meta name="twitter:description" content="Folder listings in 0.56s instead of 3.2s. Small files that stay fast instead of wedging after 211. Interrupted copies that resume byte-exact.">
+<meta name="twitter:description" content="Folder listings in 0.56s instead of 3.2s. Small files that stay fast instead of wedging after 211. Name clashes caught before they overwrite.">
 <meta name="twitter:image" content="https://porterage.app/assets/og.png">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon.ico" sizes="32x32">
@@ -169,12 +169,13 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
           The phone's storage ignores capitalisation; the protocol does not. So
           <code>Report.txt</code> and <code>report.txt</code> both appear in a listing while sharing one
           file underneath, and writing the second silently overwrites the first. Nothing warns you.
-          Porterage compares names the way the storage actually does, and refuses the write.
+          Porterage checks every name against the files already on the phone the way the storage does, and
+          stops to ask before anything is written.
         </p>
         </div>
         <div class="lamps">
           <p class="lamp lamp--alarm"><span class="dot dot--alarm" aria-hidden="true"></span>Silently overwritten elsewhere</p>
-          <p class="lamp lamp--ok"><span class="dot dot--ok" aria-hidden="true"></span>Refused here, with the conflicting name shown</p>
+          <p class="lamp lamp--ok"><span class="dot dot--ok" aria-hidden="true"></span>Stopped here, with the conflicting name shown</p>
         </div>
       </li>
     </ol>
@@ -243,13 +244,13 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
     <div class="cards">
       <article class="card">
         <p class="card__k">Cable pulled mid-copy</p>
-        <h3>Resumes at the exact byte</h3>
+        <h3>No half file that looks finished</h3>
         <p>
-          The phone reports precisely how much of the file it already holds, so a resumed copy starts at
-          the real boundary instead of a guess. Verified in both directions by comparing SHA-256 of the
-          finished file against the original.
+          A copy to the Mac is written as a <code>.part</code> file and takes its real name only once the
+          last byte lands. Copy it again into the same folder and it continues from the bytes already
+          there instead of starting over.
         </p>
-        <p class="card__read">Resumed upload <strong>19.4</strong> MiB/s · resumed download <strong>28.8</strong> MiB/s</p>
+        <p class="card__read"><strong>.part</strong> until the last byte · copy again to continue</p>
       </article>
 
       <article class="card">
@@ -276,13 +277,13 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 
       <article class="card">
         <p class="card__k">Nothing shows up</p>
-        <h3>Says which of five things is wrong</h3>
+        <h3>Says what is actually wrong</h3>
         <p>
-          Locked screen, wrong USB mode, charge-only cable, another app holding the port, or a wedged
-          connection needing a replug. Each has a different signature on the wire, and each gets its
-          own sentence instead of “busy or not connected”.
+          A locked screen, another app holding the port, and a phone that is not connected for file
+          transfer each look different on the wire, and each gets its own instruction instead of
+          “busy or not connected”.
         </p>
-        <p class="card__read">Five states, five instructions</p>
+        <p class="card__read">Locked · held by another app · not connected for file transfer</p>
       </article>
     </div>
   </div>
@@ -297,7 +298,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
         and it moves with the cursor immediately; the copy happens once the drop lands somewhere.
       </p>
       <p>
-        Drop files the other way, copy whole folders in either direction, and watch the free space on
+        Drop files the other way, copy whole folders to the Mac, and watch the free space on
         the phone move as it happens.
       </p>
       <div class="feats">
