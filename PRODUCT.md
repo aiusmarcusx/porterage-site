@@ -83,6 +83,9 @@ Constraints and undecided facts:
 - Dates are preserved phone → Mac only; the phone stamps its own clock on incoming files.
 - The removable-storage (SD card) path is untested — the test phone has no card.
 - A paid Pro tier is planned but its scope and price are undecided. **No pricing on this site.**
+- The app makes no network connections. The site does: Cloudflare Web Analytics counts visits
+  (cookieless, enabled 14 Sep 2026). Any "no telemetry" or "no tracking" copy must name the app, as
+  the footer does, never the site.
 
 ## Brand Commitments
 

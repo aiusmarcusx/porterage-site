@@ -4,6 +4,11 @@
 # and a one-year max-age would pin a broken stylesheet in every returning visitor's browser until
 # 2027. An hour instead: Cloudflare still serves these from its own edge, and a fix reaches people.
 # Restore the long cache only together with hashed filenames.
+#
+# Cloudflare injects its Web Analytics beacon into every page at the edge; it never appears in these
+# files. script-src lets it load from static.cloudflareinsights.com; connect-src 'self' lets it report,
+# because on this proxied domain it posts to /cdn-cgi/rum on porterage.app itself (measured), not to
+# cloudflareinsights.com. Remove either and the beacon is still injected, but blocked: the site counts nothing.
 
 /*
   X-Content-Type-Options: nosniff
@@ -11,7 +16,7 @@
   X-Frame-Options: DENY
   Permissions-Policy: geolocation=(), microphone=(), camera=(), interest-cohort=()
   Strict-Transport-Security: max-age=15552000; includeSubDomains
-  Content-Security-Policy: default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'none'; script-src 'self' https://static.cloudflareinsights.com; connect-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; upgrade-insecure-requests
 
 /assets/*
   Cache-Control: public, max-age=3600
