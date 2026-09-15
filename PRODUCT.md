@@ -48,8 +48,8 @@ offers no way to override that.
 ## Operating Context
 
 USB cable, one phone, one Mac. No Wi-Fi, no account, no cloud, no companion app on the phone. The
-phone must be set to File transfer mode and unlocked for a connection to start — though not to
-continue one.
+phone must be set to File transfer mode and unlocked for a connection to start, and kept unlocked:
+locking it stopped a running copy in both runs on 15 Sep.
 
 ## Capabilities and Constraints
 
@@ -69,7 +69,9 @@ must not present a prototype figure as the app's own once a shipping-engine figu
   folder again continues from those bytes. The protocol can also resume uploads (measured byte-exact
   both ways on the prototype), but the app does not: an upload that fails is deleted. Never claim
   resuming in both directions.
-- Locking the phone's screen does not interrupt a running copy; it does block starting one.
+- Locking the phone's screen stopped a running copy within seconds (twice, 15 Sep, shipping engine),
+  though a 12 Sep prototype run carried on through a lock. Unexplained, so never claim a copy
+  survives a lock.
 - A name matching a file already on the phone, ignoring case, stops the upload and asks (Keep Both,
   Replace, Skip), because the phone's storage would silently overwrite. Rename and New Folder refuse.
 - Speeds: about 29 MB/s off the phone, 15 MB/s onto it. 324 real photos (2 GB) in 79 seconds.

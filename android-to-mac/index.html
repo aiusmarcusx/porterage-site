@@ -33,7 +33,7 @@
       "headline": "How to transfer photos and files from Android to a Mac",
       "description": "The five stages of connecting an Android phone to a Mac over a cable, with what fails at each one and what was measured on real hardware.",
       "datePublished": "2026-09-14",
-      "dateModified": "2026-09-14",
+      "dateModified": "2026-09-15",
       "inLanguage": "en",
       "mainEntityOfPage": "https://porterage.app/android-to-mac/",
       "image": "https://porterage.app/assets/og.png",
@@ -86,7 +86,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
         carries data, the phone's USB mode, the lock screen, the app on the Mac, and the copy itself.
         Get the first three right and the Mac can see the phone. The fourth decides what you can copy.
       </p>
-      <p class="guide-meta">Measured on a Redmi 9T (Android 11) and a MacBook Air M1 (macOS 26.5.1) · Updated 14 September 2026</p>
+      <p class="guide-meta">Measured on a Redmi 9T (Android 11) and a MacBook Air M1 (macOS 26.5.1) · Updated 15 September 2026</p>
     </div>
 
     <nav class="path" aria-label="The five stages">
@@ -176,13 +176,14 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
           a phone is plugged in, but the list of storage comes back empty — which most tools report as
           nothing more specific than "not connected".
         </p>
-        <p>The lock only matters at the start. Once a copy is running you can lock the phone and put it down.</p>
+        <p>Keep it unlocked until the copy finishes. Locking the phone part-way can stop a copy that is already running.</p>
         <aside class="measured">
           <p class="measured__k">Measured</p>
           <p>
-            With a copy already running, the screen was locked and left locked: eleven consecutive
-            512 MiB reads finished at 29.1–29.5 MiB/s with no errors. A <em>new</em> connection tried on
-            the same locked phone at that moment failed.
+            With a 512 MiB copy running, the screen was locked: in both of two runs the copy stalled
+            within seconds, and the phone only answered again once it was unlocked. An earlier test
+            with a different app saw a copy carry on through a lock; until that difference is
+            explained, this guide goes by the worse result.
           </p>
         </aside>
       </section>

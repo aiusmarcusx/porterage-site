@@ -255,13 +255,14 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 
       <article class="card">
         <p class="card__k">Screen locks while copying</p>
-        <h3>Keeps going at full speed</h3>
+        <h3>Says the phone is locked</h3>
         <p>
-          Android blocks a computer from <em>starting</em> a session on a locked phone, but it does not
-          touch one already running. Eleven consecutive 512 MiB reads finished with the screen locked
-          the whole time, at the same speed as unlocked, with no errors.
+          A locked phone stops sharing its storage. On the test phone a running copy stalled within
+          seconds of the screen locking, and a locked phone hands over an empty storage list that other
+          tools call “not connected”. Porterage names the lock and reconnects once the phone is
+          unlocked, and copying to the Mac again picks up from the bytes that already arrived.
         </p>
-        <p class="card__read">Locked throughput <strong>29.1–29.5</strong> MiB/s · 0 failures</p>
+        <p class="card__read">Keep the phone <strong>unlocked</strong> until the copy finishes</p>
       </article>
 
       <article class="card">
